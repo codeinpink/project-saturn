@@ -1,3 +1,5 @@
 *.sqlite3
 *.pyc
 __pycache__/
+Features_Import.csv
+Teams_Import.csv
