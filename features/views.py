@@ -8,7 +8,8 @@ def index(request):
     return render(request, 'features/index.html', {})
 
 def team(request, slug):
-    return render(request, 'features/team.html', {})
+    team = get_object_or_404(Team, slug=slug)
+    return render(request, 'features/team.html', {'team_id': team.id})
 
 def all_teams(request):
     return render(request, 'features/allFeatures.html', {})

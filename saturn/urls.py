@@ -27,8 +27,8 @@ router.register(r'dependencies', views.DependencyViewSet)
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^(?P<slug>[\w-]+)/$', views.team, name='team'),
     url(r'^all$', views.all_teams, name='all_teams'),
+    url(r'^(?P<slug>[\w-]+)/$', views.team, name='team'),
     url(r'^api/', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
 ]
