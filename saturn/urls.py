@@ -16,9 +16,18 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from features import views
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'teams', views.TeamViewSet)
+router.register(r'features', views.FeatureViewSet)
+router.register(r'commitments', views.CommitmentViewSet)
+router.register(r'risks', views.RiskViewSet)
+router.register(r'dependencies', views.DependencyViewSet)
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^all$', views.all_teams, name='all_teams'),
+    url(r'^api/', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
 ]
