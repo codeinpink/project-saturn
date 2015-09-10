@@ -1,12 +1,32 @@
+.space-bg {
+    background: url('/static/img/wallpaper-earth-space.jpg') no-repeat center center fixed;
+    height: 100%;
+}
+
 .saturnFont {
-    color:#777;
-    font-family: 'Gloria Hallelujah', cursive;
+    color:#FFF;
+    font-family: 'Orbitron', cursive;
     text-align: center;
 }
-section{
+
+section.jumbotron {
 	margin-top:10em;
-    background-image: linear-gradient(to bottom,#d0e6e3 30%,#dbe7db 70%);
+    /*background-image: url('/static/img/wallpaper-earth-space.jpg'); */
+    color: #FFF;
     text-align: center;
     height:400px;
 
+}
+
+.jumbotron {
+    background: transparent;
+}
+
+
+#team-name-autocomplete {
+    margin: 40px;
+}
+
+#team-name-autocomplete button {
+    padding: 10px 40px;
 }

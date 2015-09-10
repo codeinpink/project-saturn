@@ -9,21 +9,13 @@ saturnApp.controller("homeCtrl",['$scope','$http',
 		    // called asynchronously if an error occurs
 		    // or server returns response with an error status.
 		  	});
-		$scope.msg="hello from hoem view";
-		$scope.goToTeam =function(teamName){
-			$http.get('/'+slugify(teamName)).then(function(response) {
-				console.log(response)
-		    // this callback will be called asynchronously
-		    // when the response is available
-		  	}, function(response) {
-		    // called asynchronously if an error occurs
-		    // or server returns response with an error status.
-		  	});
-	
+
+		$scope.team = "";
+		$scope.hideInput = true;
+		$scope.goToTeam =function(teamName) {
+			window.location = '/' + slugify(teamName);
 		}
-
 	}
-
 ]);
 
 
