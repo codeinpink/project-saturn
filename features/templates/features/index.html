@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<section class="jumbotron">
+<section class="jumbotron" ng-controller="homeCtrl as home">
 	<h1><span class="saturnFont">Project Saturn</span></h1>
 	<br>
 	<blockquote>
@@ -10,7 +10,7 @@
 	</blockquote><br>
 
 	<div>
-		<button type="button" class="btn btn-default btn-lg" >Show Me My Team</button>
+		<button type="button" class="btn btn-default btn-lg" ng-click='goToTeam("rain is awesome")'>Show Me My Team</button>
 		<a href="{% url 'all_teams' %}">
 			<button type="button" class="btn btn-default btn-lg" >I want to see ALL Commitments</button>
 		</a>
