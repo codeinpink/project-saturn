@@ -133,10 +133,11 @@ var dummyData = [{
 
 saturnApp.controller("allFeaturesCtrl",['$scope','$http',
 	function($scope,$http){
-		$scope.features=dummyData;
+		$scope.features={};
 		$scope.columns=COLUMN_LABELS;
-		function refreshFeatures($http){
-			$http.get('url').then(function(response) {
+		function refreshFeatures(){
+			$http.get('api/features').then(function(response) {
+                $scope.features=response.data;
 		    // this callback will be called asynchronously
 		    // when the response is available
 		  	}, function(response) {
@@ -144,6 +145,7 @@ saturnApp.controller("allFeaturesCtrl",['$scope','$http',
 		    // or server returns response with an error status.
 		  	});
 		}
+        refreshFeatures();
 
 
 
