@@ -1,5 +1,19 @@
 {% extends "base.html" %}
-
 {% block content %}
-Testing!
-{% endblock content %}
+
+<section class = "jumbotron">
+	<h1><span class = "saturnFont">Project Saturn</span></h1>
+	<br>
+	<blockquote >text
+
+		<footer>Tex</footer></blockquote><br>
+
+	<div>
+		<button type="button" class="btn btn-default btn-lg" >Show Me My Team</button>
+		<a href="{% url 'all_teams' %}">
+			<button type="button" class="btn btn-default btn-lg" >I want to see ALL Commitments</button>
+		</a>
+	</div>
+</section>
+
+{% endblock %}
