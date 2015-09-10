@@ -1,19 +1,25 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
 class Team(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, editable=False)
     bug_buffer = models.FloatField(default=0)
     num_jiras = models.PositiveSmallIntegerField(default=0)
     confidence = models.FloatField(default=0)
     previous_unplanned_work = models.FloatField(default=0)
     planned_unplanned_work = models.FloatField(default=0)
+    slug = models.SlugField(editable=False)
+
+    def save(self):
+        self.slug = slugify(self.name)
+        super(Team, self).save()
 
     def __unicode__(self):
         return self.name
 
 class Feature(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     theme = models.CharField(max_length=30)
     teams = models.ManyToManyField(Team)
     clarity_or_jira_id = models.CharField(max_length=20, blank=True)

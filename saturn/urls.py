@@ -19,5 +19,6 @@ from features import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^all$', views.all_teams, name='all_teams'),
     url(r'^admin/', include(admin.site.urls)),
 ]
