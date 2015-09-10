@@ -10,7 +10,7 @@ class Team(models.Model):
     planned_unplanned_work = models.FloatField(default=0)
     slug = models.SlugField(editable=False)
 
-    def save(self):
+    def save(self, **kwargs):
         self.slug = slugify(self.name)
         super(Team, self).save()
 
