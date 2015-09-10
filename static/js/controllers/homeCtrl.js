@@ -2,10 +2,11 @@
 saturnApp.controller("homeCtrl",['$scope','$http',
 	function($scope,$http){
 		$scope.teams = $http.get('api/teams').then(function(response) {
-				console.log(response)
+				return response.data;
 		    // this callback will be called asynchronously
 		    // when the response is available
 		  	}, function(response) {
+		  		return "error getting teams"
 		    // called asynchronously if an error occurs
 		    // or server returns response with an error status.
 		  	});
