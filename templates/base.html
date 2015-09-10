@@ -1,9 +1,35 @@
 <!DOCTYPE html>
+{% load staticfiles %}
+
 <html>
     <head>
         <title>Project Saturn</title>
+
+        <link rel="stylesheet" type="text/css" href="{% static "lib/datatables.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "lib/bootstrap-3.3.5-dist/css/bootstrap.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/app.css" %}">
+
+
+        <script type="text/javascript" src = "{% static "lib/jquery-2.1.4.min.js" %}"></script>
+        <script type="text/javascript" src = "{% static "lib/bootstrap-3.3.5-dist/js/bootstrap.min.js" %}"></script>
+		<script type="text/javascript" src = "{% static "lib/angular.min.js" %}"></script>
+		<script type="text/javascript" src = "{% static "lib/datatables.min.js" %}"></script>
+		<script type="text/javascript" src = "{% static "lib/ui-bootstrap-tpls-0.13.4.min.js" %}"></script>
+
+
+		<script type="text/javascript" src = "{% static "js/app.js" %}"></script>
+		<script type="text/javascript" src = "{% static "js/controllers/allFeaturesCtrl.js" %}"></script>
+        <script type="text/javascript" src = "{% static "js/controllers/teamCtrl.js" %}"></script>
+
     </head>
-    <body>
-        {% block content %}{% endblock content %}
+    <body ng-app = "missionControlApp">
+        {% block content %}
+
+
+        {% endblock content %}
+
+        {% block script %}
+
+        {% endblock script %}
     </body>
 </html>

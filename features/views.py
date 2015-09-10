@@ -8,7 +8,7 @@ def index(request):
     return render(request, 'features/index.html', {})
 
 def all_teams(request):
-    return render(request, 'features/index.html', {})
+    return render(request, 'features/allFeatures.html', {})
 
 class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all().order_by('name')
