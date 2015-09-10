@@ -46,7 +46,7 @@ class Risk(models.Model):
     probability = models.CharField(max_length=10)
     impact = models.CharField(max_length=10)
     severity = models.CharField(max_length=10)
-    status = models.CharField(max_length=10)
+    resolution = models.CharField(max_length=20)
     notes = models.TextField(blank=True)
 
     def __unicode__(self):
