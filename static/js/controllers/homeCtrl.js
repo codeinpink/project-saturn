@@ -1,26 +1,29 @@
 
 saturnApp.controller("homeCtrl",['$scope','$http',
 	function($scope,$http){
-		$scope.teams = $http.get('api/teams').then(function(response) {
-				return response.data;
-		    // this callback will be called asynchronously
-		    // when the response is available
-		  	}, function(response) {
-		  		return "error getting teams"
-		    // called asynchronously if an error occurs
-		    // or server returns response with an error status.
-		  	});
-
+		$scope.teams = {};
+		getAllTeams($scope,$http);
 		$scope.team = "";
 		$scope.hideInput = true;
 		$scope.goToTeam =function(teamName) {
 			window.location = '/' + slugify(teamName);
 		}
+		
 	}
 ]);
 
-
-
+function getAllTeams($scope,$http){
+	$http.get('api/teams').then(function(response) {
+		$scope.teams = response.data;
+		console.log($scope.teams);
+	// this callback will be called asynchronously
+	// when the response is available
+	}, function(response) {
+		return "error getting teams"
+	// called asynchronously if an error occurs
+	// or server returns response with an error status.
+	});
+}
 
 function slugify(text)
 {
