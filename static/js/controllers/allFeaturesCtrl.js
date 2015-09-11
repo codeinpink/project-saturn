@@ -1,10 +1,10 @@
-var COLUMN_LABELS = ['Feature','Commitment','Team','Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
+var ALL_FEATURE_COLUMN_LABELS = ['Feature','Commitment','Team','Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
 
 saturnApp.controller("allFeaturesCtrl",['$scope','$http',
 	function($scope,$http){
 		$scope.features={};
-		$scope.columns=COLUMN_LABELS;
-		
+		$scope.columns=ALL_FEATURE_COLUMN_LABELS;
+
         refreshFeatures($scope,$http);
 
 

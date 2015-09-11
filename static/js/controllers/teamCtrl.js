@@ -1,4 +1,4 @@
-var COLUMN_LABELS = ['Feature','Commitment', 'Team', 'Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
+var TEAM_COLUMN_LABELS = ['Feature','Commitment', 'Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
 
 
 
@@ -7,7 +7,7 @@ var COLUMN_LABELS = ['Feature','Commitment', 'Team', 'Commit Status','Def. of Do
 saturnApp.controller("teamCtrl",['$scope','$http',
 	function($scope,$http){
 		$scope.teamId = $('#teamId').html();
-		$scope.columns=COLUMN_LABELS;
+		$scope.columns=TEAM_COLUMN_LABELS;
 		$scope.msg="hello from team view";
 		$scope.teamObj = {}
 
