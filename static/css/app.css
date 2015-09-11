@@ -3,6 +3,11 @@
     height: 100%;
 }
 
+.white-bg {
+    background: #FFF;
+    padding: 70px 50px;
+}
+
 .saturnFont {
     color:#FFF;
     font-family: 'Orbitron', cursive;
@@ -11,7 +16,6 @@
 
 section.jumbotron {
 	margin-top:10em;
-    /*background-image: url('/static/img/wallpaper-earth-space.jpg'); */
     text-align: center;
     height:400px;
 

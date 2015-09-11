@@ -1,4 +1,4 @@
-var COLUMN_LABELS = ['Feature','Commitment','Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
+var COLUMN_LABELS = ['Feature','Commitment', 'Team', 'Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
 
 
 
@@ -10,7 +10,7 @@ saturnApp.controller("teamCtrl",['$scope','$http',
 		$scope.columns=COLUMN_LABELS;
 		$scope.msg="hello from team view";
 		$scope.teamObj = {}
-		
+
 		refreshCommits($scope,$http);
 }]);
 
@@ -33,4 +33,3 @@ function slugify(text)
     .replace(/^-+/, '')             // Trim - from start of text
     .replace(/-+$/, '');            // Trim - from end of text
 }
-

@@ -1,15 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
+<div style="margin-top: 60px;">
+	<div class ="container white-bg" ng-controller = "allFeaturesCtrl as allCtrl">
 		<div class="row">
-		</div>
-		<div class="row">
-		</div>
-	<div class="jumbotron">top row</div>
-	<div class ="container" ng-controller = "allFeaturesCtrl as allCtrl">
-		<div class="row">
-
-
-
+			<button class = "btn btn-primary pull-right" style="margin: 30px 0;">Export</button>
 		</div>
 
 
@@ -24,17 +18,29 @@
 				<tbody>
 					<tr ng-repeat="feature in features">
 						<td >{[{ feature.name }]}</td>
-						<td >{[{ feature.commitment_set }]}</td>
+						<td >
+							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.name}]}</li></ul>
+						</td>
 						<td >
 							<ul><li ng-repeat="team in feature.teams">{[{team.name}]}</li></ul>
 						</td>
 
-						<td >{[{ feature.commit_stat }]}</td>
-						<td >{[{ feature.def_done }]}</td>
-						<td >{[{ feature.start }]}</td>
+						<td >
+							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.status}]}</li></ul>
+						</td>
+						<td >
+							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.done_definition}]}</li></ul>
+						</td>
+						<td >
+							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.start}]}</li></ul>
+						</td>
 
-						<td >{[{ feature.end }]}</td>
-						<td >{[{ feature.comment }]}</td>
+						<td >
+							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.end}]}</li></ul>
+						</td>
+						<td >
+							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.end}]}</li></ul>
+						</td>
 					</tr>
 				</tbody>
 
@@ -43,7 +49,6 @@
 		</div>
 
 	</div>
-	<div class="jumbotron">bottom row</div>
 {% endblock %}
 {% block script %}
 <script type="text/javascript">
