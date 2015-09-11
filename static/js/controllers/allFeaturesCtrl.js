@@ -13,7 +13,7 @@ saturnApp.controller("allFeaturesCtrl",['$scope','$http',
 ]);
 
 function refreshFeatures($scope,$http){
-			$http.get('api/features').then(function(response) {
+			$http.get('api/features/').then(function(response) {
                 $scope.features=response.data;
                 $('#allFeatures').DataTable();
 		    // this callback will be called asynchronously

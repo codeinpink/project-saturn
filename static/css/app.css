@@ -1,11 +1,15 @@
 .space-bg {
-    background: url(https://novoolharblog.files.wordpress.com/2014/03/saturn.jpg) no-repeat center center fixed;
+    background: url(https://novoolharblog.files.wordpress.com/2014/03/saturn.jpg) no-repeat center top fixed;
     height: 100%;
 }
 
 .white-bg {
     background: #FFF;
     padding: 70px 50px;
+}
+
+.grey-bg {
+    background: #EEE;
 }
 
 .saturnFont {

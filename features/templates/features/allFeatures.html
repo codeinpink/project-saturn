@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block bg %}
+grey-bg
+{% endblock %}
+
 {% block content %}
 <div style="margin-top: 60px;">
 	<div class ="container white-bg" ng-controller = "allFeaturesCtrl as allCtrl">
@@ -9,7 +13,7 @@
 
 
 		<div class="row">
-			<table id="allFeatures" class="col-lg-12 table-border table-hover table-striped">
+			<table id="allFeatures" class="col-lg-12 table table-border table-hover table-striped">
 				<thead>
 					<tr>
 						<th ng-repeat="col in columns">{[{col}]}</th>
@@ -36,10 +40,10 @@
 						</td>
 
 						<td >
-							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.end}]}</li></ul>
+							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.stop}]}</li></ul>
 						</td>
 						<td >
-							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.end}]}</li></ul>
+							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.notes}]}</li></ul>
 						</td>
 					</tr>
 				</tbody>

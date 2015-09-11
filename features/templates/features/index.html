@@ -1,12 +1,16 @@
 {% extends "base.html" %}
+{% block bg %}
+space-bg
+{% endblock bg %}
+
 {% block content %}
 
 <section class="jumbotron" ng-controller="homeCtrl as home">
 	<h1><span class="saturnFont">Project Saturn</span></h1>
 	<br>
-	<div class="col-sm-offset-4 col-sm-4" style="margin-bottom: 40px;">
+	<div class="col-sm-offset-3 col-sm-6" style="margin-bottom: 40px;">
 		<pre style="overflow: hidden;"><h4><strong>Gamophobia</strong></h4> (prounced 'ga-me-PHO-bia')
-		<span class="pull-left">From the Greek 'gamo' meaning 'marriage', is the <strong>fear of </strong>getting married, <br>being in a relationship, or <strong>commitment</strong>.</span><br>
+		<br><span >From the Greek 'gamo' meaning 'marriage', is the <strong>fear of</strong><br>getting married, being in a relationship, or <span style="font-size:15px"><strong>commitment</strong></span>.</span><br>
 		<footer>Hackathon 2015</footer></pre>
 	</div>
 

@@ -24,7 +24,7 @@
         <script type="text/javascript" src = "{% static "js/controllers/homeCtrl.js" %}"></script>
 
     </head>
-    <body ng-app = "missionControlApp" class="space-bg">
+    <body ng-app = "missionControlApp" class="{% block bg %}{% endblock bg %}">
         {% block content %}
 
 
