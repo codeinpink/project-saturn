@@ -1,8 +1,9 @@
 
 saturnApp.controller("homeCtrl",['$scope','$http',
 	function($scope,$http){
-		$scope.teams = $http.get('api/teams').then(function(response) {
-				return response.data;
+		$scope.teams=[];
+		$http.get('api/teams').then(function(response) {
+			$scope.teams = response.data;
 		    // this callback will be called asynchronously
 		    // when the response is available
 		  	}, function(response) {
@@ -11,7 +12,6 @@ saturnApp.controller("homeCtrl",['$scope','$http',
 		    // or server returns response with an error status.
 		  	});
 
-		$scope.team = "";
 		$scope.hideInput = true;
 		$scope.goToTeam =function(teamName) {
 			window.location = '/' + slugify(teamName);

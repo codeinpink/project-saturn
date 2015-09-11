@@ -10,15 +10,15 @@
 	</blockquote><br>
 
 	<div>
-		<button type="button" class="btn btn-default btn-lg" ng-click='hideInput=false'>Show Me My Team</button>
-		<a href="{% url 'all_teams' %}">
-			<button type="button" class="btn btn-default btn-lg" >I want to see ALL Commitments</button>
-		</a>
+		<button type="button" class="btn btn-default btn-lg" ng-click="hideInput=false">Show Me My Team</button>
+		<a href="{% url 'all_teams' %}" class="btn btn-default btn-lg">I want to see ALL Commitments</a>
 		<br>
 		<div id="team-name-autocomplete" class="form-inline center-block" ng-hide="hideInput">
-			<input type="text" class="form-control input-lg" ng-model="team">
-			<button type="button" class="btn btn-primary btn-lg" ng-click="goToTeam(team)">Go</button>
+			<span angucomplete-alt id="team-name" type="text" placeholder="Team Name" input-class="form-control input-lg"
+				title-field="name" selected-object="team" local-data="teams" search-fields="name" minlength="1"></span>
+			<button type="button" class="btn btn-primary btn-lg" ng-click="goToTeam(team.title)">Go</button>
 		</div>
+
 	</div>
 </section>
 
