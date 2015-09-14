@@ -20,31 +20,15 @@ grey-bg
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="feature in features">
-						<td >{[{ feature.name }]}</td>
-						<td >
-							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.name}]}</li></ul>
-						</td>
-						<td >
-							<ul><li ng-repeat="team in feature.teams">{[{team.name}]}</li></ul>
-						</td>
-
-						<td >
-							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.status}]}</li></ul>
-						</td>
-						<td >
-							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.done_definition}]}</li></ul>
-						</td>
-						<td >
-							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.start}]}</li></ul>
-						</td>
-
-						<td >
-							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.stop}]}</li></ul>
-						</td>
-						<td >
-							<ul><li ng-repeat="commitment in feature.commitment_set">{[{commitment.notes}]}</li></ul>
-						</td>
+					<tr ng-repeat="commitment in commitments">
+						<td>{[{ commitment.feature.name }]}</td>
+						<td>{[{commitment.name}]}</td>
+						<td>{[{commitment.team.name}]}</td>
+						<td>{[{commitment.status}]}</td>
+						<td>{[{commitment.done_definition}]}</td>
+						<td>{[{commitment.start}]}</td>
+						<td>{[{commitment.stop}]}</td>
+						<td>{[{commitment.notes}]}</td>
 					</tr>
 				</tbody>
 

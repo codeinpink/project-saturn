@@ -2,19 +2,19 @@ var ALL_FEATURE_COLUMN_LABELS = ['Feature','Commitment','Team','Commit Status','
 
 saturnApp.controller("allFeaturesCtrl",['$scope','$http',
 	function($scope,$http){
-		$scope.features={};
-		$scope.columns=ALL_FEATURE_COLUMN_LABELS;
+		$scope.commitments = {};
+		$scope.columns = ALL_FEATURE_COLUMN_LABELS;
 
-        refreshFeatures($scope,$http);
+        refreshCommitments($scope,$http);
 
 
 	}
 
 ]);
 
-function refreshFeatures($scope,$http){
-			$http.get('api/features/').then(function(response) {
-                $scope.features=response.data;
+function refreshCommitments($scope,$http){
+			$http.get('api/commitments/').then(function(response) {
+                $scope.commitments = response.data;
                 $('#allFeatures').DataTable();
 		    // this callback will be called asynchronously
 		    // when the response is available
