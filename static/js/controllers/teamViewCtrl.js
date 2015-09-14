@@ -8,7 +8,6 @@ saturnApp.controller("teamViewCtrl",['$scope','$http',
 	function($scope,$http){
 		$scope.teamId = $('#teamId').html();
 		$scope.columns=TEAM_COLUMN_LABELS;
-		$scope.msg="hello from team view";
 		$scope.teamObj = {}
 
 		refreshCommits($scope,$http);
@@ -17,7 +16,12 @@ saturnApp.controller("teamViewCtrl",['$scope','$http',
 function refreshCommits($scope,$http){
 	$http.get('/api/teams/'+$scope.teamId).then(function(response) {
         $scope.teamObj=response.data;
-		$('#myCommits').DataTable();
+		$('#myCommits').DataTable({
+			dom: 'Bfrtip',
+			buttons: [
+				'copy', 'csv'
+			]
+		});
   	}, function(response) {
   	});
 }
