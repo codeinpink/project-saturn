@@ -4,7 +4,7 @@ var TEAM_COLUMN_LABELS = ['Feature','Commitment', 'Commit Status','Def. of Done'
 
 
 
-saturnApp.controller("teamCtrl",['$scope','$http',
+saturnApp.controller("teamViewCtrl",['$scope','$http',
 	function($scope,$http){
 		$scope.teamId = $('#teamId').html();
 		$scope.columns=TEAM_COLUMN_LABELS;
