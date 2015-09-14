@@ -12,7 +12,7 @@ def team(request, slug):
     return render(request, 'features/team.html', {'team_id': team.id})
 
 def all_teams(request):
-    return render(request, 'features/allFeatures.html', {})
+    return render(request, 'features/all.html', {})
 
 class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all().order_by('name')
