@@ -9,3 +9,6 @@ saturnApp.factory('Commitment', function($resource) {
         }
     });
 });
+saturnApp.factory('Commitments', function($resource) {
+    return $resource('/api/commitments/');
+});

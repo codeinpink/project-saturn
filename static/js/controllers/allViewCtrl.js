@@ -1,27 +1,28 @@
 var ALL_FEATURE_COLUMN_LABELS = ['Feature','Commitment','Team','Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
 
-saturnApp.controller("allViewCtrl",['$scope','$http',
-	function($scope,$http){
-		$scope.commitments = {};
-		$scope.columns = ALL_FEATURE_COLUMN_LABELS;
+saturnApp.controller("allViewCtrl",['$scope','$http', '$resource', '$modal', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'Commitments',
+	function($scope, $http, $resource, $modal, DTOptionsBuilder, DTColumnDefBuilder, Commitments){
+		$scope.columns=ALL_FEATURE_COLUMN_LABELS;
+		$scope.commitments =null;
+		$scope.reloadCommits = function(){refreshCommits();};
+		function refreshCommits() {
+			Commitments.query(function (commits) {
+                $scope.commitments = commits;
+                
+            });
+		}
+        refreshCommits();
 
-        refreshCommitments($scope,$http);
-	}
-]);
+		$scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers');
+    	$scope.dtColumnDefs = [
+			DTColumnDefBuilder.newColumnDef(0),
+			DTColumnDefBuilder.newColumnDef(1),
+			DTColumnDefBuilder.newColumnDef(2),
+			DTColumnDefBuilder.newColumnDef(3),
+			DTColumnDefBuilder.newColumnDef(4),
+			DTColumnDefBuilder.newColumnDef(5),
+			DTColumnDefBuilder.newColumnDef(6),
+		];
 
-function refreshCommitments($scope,$http){
-	$http.get('api/commitments/').then(function(response) {
-        $scope.commitments = response.data;
-        $('#allCommitments').DataTable({
-			dom: 'Bfrtip',
-			buttons: [
-				'copy', 'csv'
-			]
-		});
-    // this callback will be called asynchronously
-    // when the response is available
-  	}, function(response) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-  	});
-}
+
+}]);
