@@ -1,0 +1,98 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Risks for Commitment - {[{ commitment.name }]}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <table class="table row-border table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="form-group">
+                                <label>
+                                    <input class="form-control" type="text" name="name" placeholder="Risk Name">
+                                </label>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="form-group">
+                                <label>
+                                    <select class="form-control" name="probability" ng-model="risk.probability"
+                                        ng-options="opt for opt in generalOptions">
+                                    </select>
+                                </label>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="form-group">
+                                <label>
+                                    <select class="form-control" name="impact" ng-model="risk.impact"
+                                        ng-options="opt for opt in generalOptions">
+                                    </select>
+                                </label>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="form-group">
+                                <label>
+                                    <select class="form-control" name="severity" ng-model="risk.severity"
+                                        ng-options="opt for opt in generalOptions">
+                                    </select>
+                                </label>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="form-group">
+                                <label>
+                                    <select class="form-control" name="resolution" ng-model="risk.resolution"
+                                        ng-options="opt for opt in resolutionOptions">
+                                    </select>
+                                </label>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="form-group">
+                                <label>
+                                    <input class="form-control" type="text" name="comments" placeholder="Comments">
+                                </label>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="form-group">
+                                <label>
+                                    <button type="button" class="btn btn-success" ng-click="saveRisk(risk)"><i class="glyphicon glyphicon-plus"></i></button>
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Risk</th>
+                        <th>Probability</th>
+                        <th>Impact</th>
+                        <th>Severity</th>
+                        <th>Resolution</th>
+                        <th>Comments</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="risk in commitment.risk_set">
+                        <td>{[{ risk.name }]}</td>
+                        <td>{[{ risk.probability }]}</td>
+                        <td>{[{ risk.impact }]}</td>
+                        <td>{[{ risk.severity }]}</td>
+                        <td>{[{ risk.resolution }]}</td>
+                        <td>{[{ risk.comments }]}</td>
+                        <td><button type="button" ng-click="editRisk('', risk)" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></button></td>
+                        <td><button type="button" ng-click="showConfirmationPrompt('', risk.id)" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="close()">Close</button>
+    </div>
+</div>
