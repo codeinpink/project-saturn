@@ -55,3 +55,8 @@ section.jumbotron {
     width: 245px;
     background: #FFF;
 }
+
+.glyphicon.glyphicon-alert {
+    font-size: 75px;
+    color: #d9534f;
+}

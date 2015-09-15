@@ -1,0 +1,65 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit Commitment</h4>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Feature:</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">{[{ commitment.feature.name }]}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="commitment-name" class="control-label col-sm-3">Commitment:</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="commitment.name" class="form-control" id="commitment-name" value="{[{ commitment.name }]}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="commitment-status" class="control-label col-sm-3">Commitment Status:</label>
+                    <div class="col-sm-9">
+                        <select class="form-control col-sm-9" id="commitment-status" ng-model="commitment.status"
+                            ng-options="opt for opt in commitmentStatusOptions">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="definition-of-done" class="control-label col-sm-3">Definition of Done:</label>
+                    <div class="col-sm-9">
+                        <select class="form-control col-sm-9" id="definition-of-done" ng-model="commitment.done_definition" ng-options="opt for opt in defOfDoneOptions">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="start" class="control-label col-sm-3">Start Iteration:</label>
+                    <div class="col-sm-9">
+                        <select class="form-control col-sm-9" id="start" ng-model="commitment.start"
+                            ng-options="opt for opt in iterationOptions">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="stop" class="control-label col-sm-3">Finish Iteration:</label>
+                    <div class="col-sm-9">
+                        <select class="form-control col-sm-9" id="start" ng-model="commitment.stop"
+                            ng-options="opt for opt in iterationOptions">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="comments" class="control-label col-sm-3">Comments:</label>
+                    <div class="col-sm-9">
+                        <textarea ng-model="commitment.notes" class="form-control" id="comments" rows="3">{[{ commitment.notes }]}</textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="updateCommitment()">Update</button>
+        <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+    </div>
+</div>

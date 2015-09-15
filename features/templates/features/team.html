@@ -32,14 +32,13 @@ grey-bg
 						<td >{[{ commitment.start }]}</td>
 						<td >{[{ commitment.stop }]}</td>
 						<td >{[{ commitment.notes }]}</td>
-						<td><button type="button" ng-click="editCommitment(commitment.id)" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></button></td>
-						<td><button type="button" ng-click="deleteCommitment(commitment.id)" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button></td>
+						<td><button type="button" ng-click="editCommitment('', commitment)" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></button></td>
+						<td><button type="button" ng-click="showConfirmationPrompt('', commitment.id)" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-
-
 	</div>
 </div>
+
 {% endblock %}
