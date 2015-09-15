@@ -1,15 +1,10 @@
 var TEAM_COLUMN_LABELS = ['Feature','Commitment', 'Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
 
-saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', 'DTOptionsBuilder', 'DTColumnDefBuilder',
-	function($scope, $http, $resource, DTOptionsBuilder, DTColumnDefBuilder){
+saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'Team',
+	function($scope, $http, $resource, DTOptionsBuilder, DTColumnDefBuilder, Team){
 		$scope.teamId = $('#teamId').html();
 		$scope.columns=TEAM_COLUMN_LABELS;
 
-		/* TODO: Move resource into factory?
-		see:	https://docs.angularjs.org/api/ngResource/service/$resource
-				http://www.sitepoint.com/creating-crud-app-minutes-angulars-resource/
-		*/
-		var Team = $resource('/api/teams/:id/')
 		$scope.teamObj = Team.get({id: $scope.teamId}), function() {
 			console.log($scope.teamObj);
 		};
