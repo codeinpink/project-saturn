@@ -9,14 +9,12 @@
                 <i class="glyphicon glyphicon-alert"></i>
             </div>
             <div class="col-sm-9">
-                <p>Are you sure you want to delete this commitment? Deleting
-                    this commitment will also delete any associated
-                    risks and dependencies.</p>
+                <p>{[{ confirmationText }]}</p>
             </div>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
-        <button type="button" class="btn btn-danger" ng-click="deleteCommitment()">Delete</button>
+        <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
     </div>
 </div>
