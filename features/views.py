@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.csrf import ensure_csrf_cookie
 from .models import Team, Feature, Commitment, Risk, Dependency
 from rest_framework import viewsets
 from .serializers import TeamSerializer, FeatureSerializer, CommitmentSerializer, \
@@ -7,6 +8,7 @@ from .serializers import TeamSerializer, FeatureSerializer, CommitmentSerializer
 def index(request):
     return render(request, 'features/index.html', {})
 
+@ensure_csrf_cookie
 def team(request, slug):
     team = get_object_or_404(Team, slug=slug)
     return render(request, 'features/team.html', {'team_id': team.id})
@@ -29,6 +31,9 @@ class CommitmentViewSet(viewsets.ModelViewSet):
 class RiskViewSet(viewsets.ModelViewSet):
     queryset = Risk.objects.all().order_by('name')
     serializer_class = RiskSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(commitment_id=self.request.data['commitment_id'])
 
 class DependencyViewSet(viewsets.ModelViewSet):
     queryset = Dependency.objects.all().order_by('name')

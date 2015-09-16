@@ -4,6 +4,7 @@ from rest_framework import serializers
 class RiskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Risk
+        fields = ['id', 'name', 'commitment', 'probability', 'impact', 'severity', 'resolution', 'notes']
         depth = 1
 
 class DependencySerializer(serializers.ModelSerializer):
@@ -14,7 +15,7 @@ class DependencySerializer(serializers.ModelSerializer):
 class CommitmentSerializer(serializers.ModelSerializer):
     risk_set = RiskSerializer(many=True)
     dependency_set = DependencySerializer(many=True)
-    
+
     class Meta:
         model = Commitment
         fields = ('id', 'name', 'team', 'feature', 'done_definition', 'status',

@@ -1,7 +1,15 @@
-saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, commitment) {
+saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, Risk, commitment) {
 	$scope.commitment = commitment;
 	$scope.generalOptions = RISK_GENERAL_OPTIONS;
 	$scope.resolutionOptions = RISK_RESOLUTION_OPTIONS;
+
+    $scope.saveRisk = function(risk) {
+        risk.commitment_id = $scope.commitment.id;
+
+        Risk.save(risk, function() {
+			console.log("Saved");
+		});
+    };
 
 	$scope.editRisk = function(size, risk, commitmentName) {
 		var modalInstance = $modal.open({
@@ -61,7 +69,7 @@ saturnApp.controller('EditRiskCtrl', function($scope, $modalInstance, risk, comm
 saturnApp.controller('DeleteRiskCtrl', function($scope, $modalInstance, $modal, id, Risk) {
 	$scope.risk_id = id;
     $scope.confirmationText = 'Are you sure you want to delete this risk?';
-    
+
 	$scope.delete = function() {
 		Risk.delete({id: $scope.risk_id}, function() {
 			console.log("Risk deleted.");
