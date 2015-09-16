@@ -38,3 +38,6 @@ class RiskViewSet(viewsets.ModelViewSet):
 class DependencyViewSet(viewsets.ModelViewSet):
     queryset = Dependency.objects.all().order_by('name')
     serializer_class = DependencySerializer
+
+    def perform_create(self, serializer):
+        serializer.save(commitment_id=self.request.data['commitment_id'], dependent_on_id=self.request.data['dependent_on_id'])

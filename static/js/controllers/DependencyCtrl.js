@@ -2,6 +2,15 @@ saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, 
 	$scope.commitment = commitment;
     $scope.teams = Team.query();
 
+    $scope.saveDependency = function(dependency) {
+        dependency.commitment_id = $scope.commitment.id;
+        dependency.dependent_on_id = dependency.dependent_on.id;
+
+        Dependency.save(dependency, function() {
+			console.log("Saved");
+		});
+    };
+
     $scope.editDependency = function(size, dependency) {
 		var modalInstance = $modal.open({
 			animation: true,

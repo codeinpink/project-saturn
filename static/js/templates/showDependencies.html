@@ -11,14 +11,14 @@
                         <th>
                             <div class="form-group">
                                 <label>
-                                    <input class="form-control" type="text" name="name" placeholder="Dependency Name">
+                                    <input class="form-control" type="text" name="name" placeholder="Dependency Name" ng-model="dependency.name">
                                 </label>
                             </div>
                         </th>
                         <th>
                             <div class="form-group">
                                 <label>
-                                    <select class="form-control" name="team" ng-model="dependency.team"
+                                    <select class="form-control" name="team" ng-model="dependency.dependent_on"
                                         ng-options="opt.name for opt in teams">
                                     </select>
                                 </label>
@@ -27,7 +27,7 @@
                         <th>
                             <div class="form-group">
                                 <label>
-                                    <input class="form-control" type="text" name="comments" placeholder="Comments">
+                                    <input class="form-control" type="text" name="comments" placeholder="Comments" ng-model="dependency.notes">
                                 </label>
                             </div>
                         </th>
