@@ -30,7 +30,9 @@ class TeamSerializer(serializers.ModelSerializer):
 class RiskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Risk
+        depth = 1
 
 class DependencySerializer(serializers.ModelSerializer):
     class Meta:
         model = Dependency
+        depth = 1
