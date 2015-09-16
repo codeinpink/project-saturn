@@ -9,6 +9,23 @@ saturnApp.factory('Commitment', function($resource) {
         }
     });
 });
+
+saturnApp.factory('Risk', function($resource) {
+    return $resource('/api/risks/:id/', {id: '@id'}, {
+        update: {
+            method: 'PUT'
+        }
+    });
+});
+
+saturnApp.factory('Dependency', function($resource) {
+    return $resource('/api/dependencies/:id/', {id: '@id'}, {
+        update: {
+            method: 'PUT'
+        }
+    });
+});
+
 saturnApp.factory('Commitments', function($resource) {
     return $resource('/api/commitments/');
 });
