@@ -42,7 +42,7 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'D
 		$scope.showDependencies = function(commitment) {
 			var modalInstance = $modal.open({
 				animation: true,
-				templateUrl: '/static/js/templates/editCommitment.html',
+				templateUrl: '/static/js/templates/showDependencies.html',
 				controller: 'DependencyCtrl',
 				size: 'lg',
 				resolve: {

@@ -1,0 +1,65 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Dependencies for Commitment - {[{ commitment.name }]}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <table class="table row-border table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="form-group">
+                                <label>
+                                    <input class="form-control" type="text" name="name" placeholder="Dependency Name">
+                                </label>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="form-group">
+                                <label>
+                                    <select class="form-control" name="team" ng-model="dependency.team"
+                                        ng-options="opt.name for opt in teams">
+                                    </select>
+                                </label>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="form-group">
+                                <label>
+                                    <input class="form-control" type="text" name="comments" placeholder="Comments">
+                                </label>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="form-group">
+                                <label>
+                                    <button type="button" class="btn btn-success" ng-click="saveDependency(dependency)"><i class="glyphicon glyphicon-plus"></i></button>
+                                </label>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Dependency</th>
+                        <th>Dependent On</th>
+                        <th>Comments</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="dependency in commitment.dependency_set">
+                        <td>{[{ dependency.name }]}</td>
+                        <td>{[{ dependency.dependent_on.name }]}</td>
+                        <td colspan="2">{[{ dependency.notes }]}</td>
+                        <td><button type="button" ng-click="editDependency('', dependency)" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></button></td>
+                        <td><button type="button" ng-click="showConfirmationPrompt(dependency.id)" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="close()">Close</button>
+    </div>
+</div>
