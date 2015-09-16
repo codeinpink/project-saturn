@@ -1,7 +1,20 @@
 from .models import Team, Feature, Commitment, Risk, Dependency
 from rest_framework import serializers
 
+class RiskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Risk
+        depth = 1
+
+class DependencySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Dependency
+        depth = 1
+
 class CommitmentSerializer(serializers.ModelSerializer):
+    risk_set = RiskSerializer(many=True)
+    dependency_set = DependencySerializer(many=True)
+    
     class Meta:
         model = Commitment
         fields = ('id', 'name', 'team', 'feature', 'done_definition', 'status',
@@ -26,13 +39,3 @@ class TeamSerializer(serializers.ModelSerializer):
                 'previous_unplanned_work', 'planned_unplanned_work', 'slug', 'feature_set',
                 'commitment_set')
         depth = 2
-
-class RiskSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Risk
-        depth = 1
-
-class DependencySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Dependency
-        depth = 1
