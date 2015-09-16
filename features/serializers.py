@@ -10,7 +10,7 @@ class RiskSerializer(serializers.ModelSerializer):
 class DependencySerializer(serializers.ModelSerializer):
     class Meta:
         model = Dependency
-        fields = ['id', 'name', 'dependent_on', 'notes']
+        fields = ['id', 'name', 'commitment', 'dependent_on', 'notes']
         depth = 1
 
 class CommitmentSerializer(serializers.ModelSerializer):
