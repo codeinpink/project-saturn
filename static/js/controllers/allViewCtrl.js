@@ -13,7 +13,15 @@ saturnApp.controller("allViewCtrl",['$scope','$http', '$resource', '$modal', 'DT
 		}
         refreshCommits();
 
-		$scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers');
+		$scope.dtOptions = DTOptionsBuilder.newOptions().withTableTools('/static/lib/copy_csv_xls_pdf.swf')
+        .withTableToolsButtons([
+            'copy',
+            'print', {
+                'sExtends': 'collection',
+                'sButtonText': 'Save',
+                'aButtons': ['csv', 'xls', 'pdf']
+            }
+        ]).withPaginationType('full_numbers');
     	$scope.dtColumnDefs = [
 			DTColumnDefBuilder.newColumnDef(0),
 			DTColumnDefBuilder.newColumnDef(1),
