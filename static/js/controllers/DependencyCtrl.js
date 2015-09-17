@@ -27,6 +27,10 @@ saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, 
 				}
 			}
 		});
+
+		modalInstance.result.then(function(updated_dependency) {
+			$scope.commitment.dependency_set[$scope.commitment.dependency_set.indexOf(dependency)] = updated_dependency;
+		});
 	};
 
 	$scope.showConfirmationPrompt = function(dependency) {
@@ -53,15 +57,14 @@ saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, 
 });
 
 saturnApp.controller('EditDependencyCtrl', function($scope, $modalInstance, Dependency, Team, dependency, teams) {
-	$scope.dependency = dependency;
+	$scope.dependency = angular.copy(dependency);
     $scope.teams = teams;
 
 	$scope.updateDependency = function() {
-		Dependency.update({id: $scope.dependency.id}, $scope.dependency, function() {
+		Dependency.update({id: $scope.dependency.id}, $scope.dependency, function(dependency) {
 			console.log("Updated");
+			$modalInstance.close(dependency);
 		});
-
-	  $modalInstance.close();
 	};
 
 	$scope.cancel = function () {

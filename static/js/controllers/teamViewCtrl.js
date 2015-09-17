@@ -91,6 +91,10 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'D
 		        	}
 				}
 		    });
+
+			modalInstance.result.then(function(updated_commitment) {
+				$scope.teamObj.commitment_set[$scope.teamObj.commitment_set.indexOf(commitment)] = updated_commitment;
+			});
 		};
 
 		$scope.showConfirmationPrompt = function(size, commitment) {
@@ -162,17 +166,16 @@ saturnApp.controller('DeleteCommitmentCtrl', function($scope, $modalInstance, $m
 });
 
 saturnApp.controller('EditCommitmentCtrl', function($scope, $modalInstance, commitment, Commitment) {
-	$scope.commitment = commitment;
+	$scope.commitment = angular.copy(commitment);
 	$scope.iterationOptions = PSI_CYCLES;
 	$scope.commitmentStatusOptions = COMMITMENT_STATUS_OPTIONS;
 	$scope.defOfDoneOptions = DEFINITION_OF_DONE_OPTIONS;
 
 	$scope.updateCommitment = function() {
-		Commitment.update({id: $scope.commitment.id}, $scope.commitment, function() {
+		Commitment.update({id: $scope.commitment.id}, $scope.commitment, function(commitment) {
 			console.log("Updated");
+			$modalInstance.close(commitment);
 		});
-
-	  $modalInstance.close();
 	};
 
 	$scope.cancel = function () {

@@ -27,6 +27,10 @@ saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, Risk, 
 				}
 			}
 		});
+
+		modalInstance.result.then(function(updated_risk) {
+			$scope.commitment.risk_set[$scope.commitment.risk_set.indexOf(risk)] = updated_risk;
+		});
 	};
 
 	$scope.showConfirmationPrompt = function(risk) {
@@ -53,17 +57,16 @@ saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, Risk, 
 });
 
 saturnApp.controller('EditRiskCtrl', function($scope, $modalInstance, risk, commitmentName, Risk) {
-	$scope.risk = risk;
+	$scope.risk = angular.copy(risk);
 	$scope.commitmentName = commitmentName;
 	$scope.generalOptions = RISK_GENERAL_OPTIONS;
 	$scope.resolutionOptions = RISK_RESOLUTION_OPTIONS;
 
 	$scope.updateRisk = function() {
-		Risk.update({id: $scope.risk.id}, $scope.risk, function() {
+		Risk.update({id: $scope.risk.id}, $scope.risk, function(risk) {
 			console.log("Updated");
+			$modalInstance.close(risk);
 		});
-
-	  $modalInstance.close();
 	};
 
 	$scope.cancel = function () {
