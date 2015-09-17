@@ -6,8 +6,9 @@ saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, Risk, 
     $scope.saveRisk = function(risk) {
         risk.commitment_id = $scope.commitment.id;
 
-        Risk.save(risk, function() {
+        Risk.save(risk, function(risk) {
 			console.log("Saved");
+			$scope.commitment.risk_set.push(risk);
 		});
     };
 

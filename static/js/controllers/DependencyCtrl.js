@@ -6,8 +6,9 @@ saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, 
         dependency.commitment_id = $scope.commitment.id;
         dependency.dependent_on_id = dependency.dependent_on.id;
 
-        Dependency.save(dependency, function() {
+        Dependency.save(dependency, function(dependency) {
 			console.log("Saved");
+			$scope.commitment.dependency_set.push(dependency);
 		});
     };
 
