@@ -14,8 +14,8 @@ class DependencySerializer(serializers.ModelSerializer):
         depth = 1
 
 class CommitmentSerializer(serializers.ModelSerializer):
-    risk_set = RiskSerializer(many=True)
-    dependency_set = DependencySerializer(many=True)
+    risk_set = RiskSerializer(many=True, read_only=True)
+    dependency_set = DependencySerializer(many=True, read_only=True)
 
     class Meta:
         model = Commitment

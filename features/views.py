@@ -28,6 +28,9 @@ class CommitmentViewSet(viewsets.ModelViewSet):
     queryset = Commitment.objects.all().order_by('name')
     serializer_class = CommitmentSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(feature_id=self.request.data['feature_id'], team_id=self.request.data['team_id'])
+
 class RiskViewSet(viewsets.ModelViewSet):
     queryset = Risk.objects.all().order_by('name')
     serializer_class = RiskSerializer

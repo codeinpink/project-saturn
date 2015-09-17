@@ -17,7 +17,8 @@ grey-bg
 					<table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table row-border table-hover table-striped">
 						<thead>
 							<tr>
-								<th style="border-bottom: 0px;"><button type="button" ng-click="addCommitment($index)" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button></th>
+								<th style="border-bottom: 0px;" colspan="10"></th>
+								<th style="border-bottom: 0px;"><button type="button" ng-click="addCommitment()" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button></th>
 							</tr>
 							<tr>
 								<th ng-repeat="col in columns">{[{col}]}</th>

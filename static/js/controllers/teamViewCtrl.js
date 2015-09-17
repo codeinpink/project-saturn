@@ -1,13 +1,15 @@
 var TEAM_COLUMN_LABELS = ['Feature','Commitment', 'Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
 
-saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'Team', 'Commitment',
-	function($scope, $http, $resource, $modal, DTOptionsBuilder, DTColumnDefBuilder, Team, Commitment) {
+saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'Team', 'Feature', 'Commitment',
+	function($scope, $http, $resource, $modal, DTOptionsBuilder, DTColumnDefBuilder, Team, Feature, Commitment) {
 		$scope.teamId = $('#teamId').html();
 		$scope.columns = TEAM_COLUMN_LABELS;
 
 		$scope.teamObj = Team.get({id: $scope.teamId}), function() {
 			console.log($scope.teamObj);
 		};
+
+		$scope.allFeatures = Feature.query();
 
 		$scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers');
 
@@ -24,6 +26,26 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'D
 			DTColumnDefBuilder.newColumnDef(9).notSortable(),
 			DTColumnDefBuilder.newColumnDef(10).notSortable(),
 		];
+
+		$scope.addCommitment = function() {
+			var modalInstance = $modal.open({
+				animation: true,
+				templateUrl: '/static/js/templates/addCommitment.html',
+				controller: 'NewCommitmentCtrl',
+				size: '',
+				resolve: {
+					allFeatures: function() {
+						return $scope.allFeatures;
+					},
+		        	teamFeatures: function() {
+						return $scope.teamObj.feature_set;
+		        	},
+					teamId: function() {
+						return $scope.teamId;
+					}
+				}
+		    });
+		};
 
 		$scope.showRisks = function(commitment) {
 			var modalInstance = $modal.open({
@@ -82,6 +104,36 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'D
 		};
 
 }]);
+
+saturnApp.controller('NewCommitmentCtrl', function($scope, $modalInstance, Commitment, allFeatures, teamFeatures, teamId) {
+	$scope.allFeatures = allFeatures;
+	$scope.teamFeatures = teamFeatures;
+	$scope.features = teamFeatures;
+	$scope.teamId = teamId;
+
+	$scope.iterationOptions = PSI_CYCLES;
+	$scope.commitmentStatusOptions = COMMITMENT_STATUS_OPTIONS;
+	$scope.defOfDoneOptions = DEFINITION_OF_DONE_OPTIONS;
+
+	$scope.toggleFeatureSource = function() {
+		$scope.features = ($scope.features === $scope.teamFeatures ? $scope.allFeatures : $scope.teamFeatures);
+	};
+
+	$scope.saveCommitment = function(commitment) {
+		commitment.feature_id = commitment.feature.id;
+		commitment.team_id = $scope.teamId;
+
+		Commitment.save(commitment, function() {
+			console.log("Saved");
+		});
+
+	  $modalInstance.close();
+	};
+
+	$scope.cancel = function () {
+    	$modalInstance.dismiss('cancel');
+	};
+});
 
 saturnApp.controller('DeleteCommitmentCtrl', function($scope, $modalInstance, $modal, id, Commitment) {
 	$scope.commitment_id = id;
