@@ -1,4 +1,4 @@
-var TEAM_COLUMN_LABELS = ['Feature','Commitment', 'Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
+var TEAM_COLUMN_LABELS = ['Commitment','Feature', 'Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
 
 saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'Team', 'Feature', 'Commitment',
 	function($scope, $http, $resource, $modal, DTOptionsBuilder, DTColumnDefBuilder, Team, Feature, Commitment) {
