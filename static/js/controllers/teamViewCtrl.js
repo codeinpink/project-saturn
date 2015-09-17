@@ -45,6 +45,10 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'D
 					}
 				}
 		    });
+
+			modalInstance.result.then(function(commitment) {
+				$scope.teamObj.commitment_set.push(commitment);
+			});
 		};
 
 		$scope.showRisks = function(commitment) {
@@ -89,18 +93,22 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'D
 		    });
 		};
 
-		$scope.showConfirmationPrompt = function(size, id) {
+		$scope.showConfirmationPrompt = function(size, commitment) {
 			var modalInstance = $modal.open({
 				animation: true,
 				templateUrl: '/static/js/templates/deleteConfirmation.html',
 				controller: 'DeleteCommitmentCtrl',
 				size: size,
 				resolve: {
-					id: function () {
-						return id;
+					commitment: function () {
+						return commitment;
 					}
 				}
 		    });
+
+			modalInstance.result.then(function(commitment) {
+				$scope.teamObj.commitment_set.splice($scope.teamObj.commitment_set.indexOf(commitment), 1);
+			});
 		};
 
 }]);
@@ -123,11 +131,10 @@ saturnApp.controller('NewCommitmentCtrl', function($scope, $modalInstance, Commi
 		commitment.feature_id = commitment.feature.id;
 		commitment.team_id = $scope.teamId;
 
-		Commitment.save(commitment, function() {
-			console.log("Saved");
+		Commitment.save(commitment, function(commitment) {
+			console.log('Saved');
+			$modalInstance.close(commitment);
 		});
-
-	  $modalInstance.close();
 	};
 
 	$scope.cancel = function () {
@@ -135,17 +142,18 @@ saturnApp.controller('NewCommitmentCtrl', function($scope, $modalInstance, Commi
 	};
 });
 
-saturnApp.controller('DeleteCommitmentCtrl', function($scope, $modalInstance, $modal, id, Commitment) {
-	$scope.commitment_id = id;
+saturnApp.controller('DeleteCommitmentCtrl', function($scope, $modalInstance, $modal, Commitment, commitment) {
+	$scope.commitment = commitment;
 	$scope.confirmationText = 'Are you sure you want to delete this commitment? ' +
 	'Deleting this commitment will also delete any associated risks and dependencies.';
 
 	$scope.delete = function() {
-		Commitment.delete({id: $scope.commitment_id}, function() {
-			console.log("Commitment deleted.");
+		Commitment.delete({id: $scope.commitment.id}, function() {
+			console.log('Commitment deleted.');
+			$modalInstance.close($scope.commitment);
 		});
 
-		$modalInstance.close();
+
 	};
 
 	$scope.cancel = function () {
