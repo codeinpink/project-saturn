@@ -29,17 +29,21 @@ saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, 
 		});
 	};
 
-	$scope.showConfirmationPrompt = function(id) {
+	$scope.showConfirmationPrompt = function(dependency) {
 		var modalInstance = $modal.open({
 			animation: true,
 			templateUrl: '/static/js/templates/deleteConfirmation.html',
 			controller: 'DeleteDependencyCtrl',
 			size: '',
 			resolve: {
-				id: function () {
-					return id;
+				dependency: function () {
+					return dependency;
 				}
 			}
+		});
+
+		modalInstance.result.then(function(dependency) {
+			$scope.commitment.dependency_set.splice($scope.commitment.dependency_set.indexOf(dependency), 1);
 		});
 	};
 
@@ -65,16 +69,15 @@ saturnApp.controller('EditDependencyCtrl', function($scope, $modalInstance, Depe
 	};
 });
 
-saturnApp.controller('DeleteDependencyCtrl', function($scope, $modalInstance, $modal, id, Dependency) {
-	$scope.dependency_id = id;
+saturnApp.controller('DeleteDependencyCtrl', function($scope, $modalInstance, $modal, Dependency, dependency) {
+	$scope.dependency = dependency;
     $scope.confirmationText = 'Are you sure you want to delete this dependency?';
 
 	$scope.delete = function() {
-		Dependency.delete({id: $scope.dependency_id}, function() {
+		Dependency.delete({id: $scope.dependency.id}, function() {
 			console.log("Dependency deleted.");
+			$modalInstance.close($scope.dependency);
 		});
-
-		$modalInstance.close();
 	};
 
 	$scope.cancel = function () {

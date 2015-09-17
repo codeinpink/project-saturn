@@ -29,17 +29,21 @@ saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, Risk, 
 		});
 	};
 
-	$scope.showConfirmationPrompt = function(id) {
+	$scope.showConfirmationPrompt = function(risk) {
 		var modalInstance = $modal.open({
 			animation: true,
 			templateUrl: '/static/js/templates/deleteConfirmation.html',
 			controller: 'DeleteRiskCtrl',
 			size: '',
 			resolve: {
-				id: function () {
-					return id;
+				risk: function () {
+					return risk;
 				}
 			}
+		});
+
+		modalInstance.result.then(function(risk) {
+			$scope.commitment.risk_set.splice($scope.commitment.risk_set.indexOf(risk), 1);
 		});
 	};
 
@@ -67,16 +71,15 @@ saturnApp.controller('EditRiskCtrl', function($scope, $modalInstance, risk, comm
 	};
 });
 
-saturnApp.controller('DeleteRiskCtrl', function($scope, $modalInstance, $modal, id, Risk) {
-	$scope.risk_id = id;
+saturnApp.controller('DeleteRiskCtrl', function($scope, $modalInstance, $modal, Risk, risk) {
+	$scope.risk = risk;
     $scope.confirmationText = 'Are you sure you want to delete this risk?';
 
 	$scope.delete = function() {
-		Risk.delete({id: $scope.risk_id}, function() {
+		Risk.delete({id: $scope.risk.id}, function() {
 			console.log("Risk deleted.");
+			$modalInstance.close($scope.risk);
 		});
-
-		$modalInstance.close();
 	};
 
 	$scope.cancel = function () {
