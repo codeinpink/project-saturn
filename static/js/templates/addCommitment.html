@@ -5,12 +5,15 @@
     </div>
     <div class="modal-body">
         <div class="container-fluid">
-            <form class="form-horizontal">
+            <form name="newCommitmentForm" class="form-horizontal">
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Feature:</label>
+                    <label class="control-label col-sm-3">
+                        Feature:
+                        <span ng-if="submitted && newCommitmentForm.feature.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
-                        <select class="form-control" ng-model="commitment.feature"
-                            ng-options="opt.name for opt in features">
+                        <select class="form-control" name="feature" ng-model="commitment.feature"
+                            ng-options="opt.name for opt in features" required>
                         </select>
                     </div>
                     <div class="col-sm-push-3 col-sm-9">
@@ -23,46 +26,71 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Commitment Name:</label>
+                    <label class="control-label col-sm-3">
+                        Commitment Name:
+                        <span ng-if="submitted && newCommitmentForm.name.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
-                        <input type="text" ng-model="commitment.name" class="form-control" value="{[{ commitment.name }]}">
+                        <input type="text" ng-model="commitment.name" class="form-control"
+                        name="name" value="{[{ commitment.name }]}" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Commitment Status:</label>
+                    <label class="control-label col-sm-3">
+                        Commitment Status:
+                        <span ng-if="submitted && newCommitmentForm.status.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
                         <select class="form-control col-sm-9" ng-model="commitment.status"
-                            ng-options="opt for opt in commitmentStatusOptions">
+                            ng-options="opt for opt in commitmentStatusOptions"
+                            name="status" required>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Definition of Done:</label>
+                    <label class="control-label col-sm-3">
+                        Definition of Done:
+                        <span ng-if="submitted && newCommitmentForm.done_definition.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
-                        <select class="form-control col-sm-9" ng-model="commitment.done_definition" ng-options="opt for opt in defOfDoneOptions">
+                        <select class="form-control col-sm-9" ng-model="commitment.done_definition"
+                        ng-options="opt for opt in defOfDoneOptions"
+                        name="done_definition" required>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Start Iteration:</label>
+                    <label class="control-label col-sm-3">
+                        Start Iteration:
+                        <span ng-if="submitted && newCommitmentForm.start.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
                         <select class="form-control col-sm-9" ng-model="commitment.start"
-                            ng-options="opt for opt in iterationOptions">
+                            ng-options="opt for opt in iterationOptions"
+                            name="start" required>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Finish Iteration:</label>
+                    <label class="control-label col-sm-3">
+                        Finish Iteration:
+                        <span ng-if="submitted && newCommitmentForm.stop.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
                         <select class="form-control col-sm-9" ng-model="commitment.stop"
-                            ng-options="opt for opt in iterationOptions">
+                            ng-options="opt for opt in iterationOptions"
+                            name="stop" required>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Comments:</label>
+                    <label class="control-label col-sm-3">
+                        Comments:
+                        <span ng-if="submitted && newCommitmentForm.comments.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
-                        <textarea ng-model="commitment.notes" class="form-control" rows="3">{[{ commitment.notes }]}</textarea>
+                        <textarea ng-model="commitment.notes" class="form-control" rows="3"
+                        name="comments" ng-required="commitment.done_definition === 'OTHER - DESCRIBED IN COMMENTS'">{[{ commitment.notes }]}</textarea>
                     </div>
                 </div>
             </form>

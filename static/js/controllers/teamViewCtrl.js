@@ -161,18 +161,40 @@ saturnApp.controller('NewCommitmentCtrl', function($scope, $modalInstance, Commi
 	$scope.commitmentStatusOptions = COMMITMENT_STATUS_OPTIONS;
 	$scope.defOfDoneOptions = DEFINITION_OF_DONE_OPTIONS;
 
+	$scope.submitted = false;
+
 	$scope.toggleFeatureSource = function() {
 		$scope.features = ($scope.features === $scope.teamFeatures ? $scope.allFeatures : $scope.teamFeatures);
 	};
 
-	$scope.saveCommitment = function(commitment) {
-		commitment.feature_id = commitment.feature.id;
-		commitment.team_id = $scope.teamId;
+	$scope.doneDefinitionIsValid = function() {
+		var valid = true;
 
-		Commitment.save(commitment, function(commitment) {
-			console.log('Saved');
-			$modalInstance.close(commitment);
-		});
+		// If they chose 'OTHER', make sure they fill out the comment field
+		if ($scope.commitment && $scope.commitment.done_definition) {
+			if ($scope.commitment.done_definition === 'OTHER - DESCRIBED IN COMMENTS' &&
+			((typeof $scope.commitment.notes === 'undefined' || !$scope.commitment.notes))) {
+				valid = false;
+			}
+		}
+
+		return valid;
+	};
+
+	$scope.saveCommitment = function(commitment) {
+		$scope.submitted = true;
+
+		if (commitment && commitment.feature) {
+			commitment.feature_id = commitment.feature.id;
+			commitment.team_id = $scope.teamId;
+		}
+
+		if ($scope.doneDefinitionIsValid()) {
+			Commitment.save(commitment, function(commitment) {
+				console.log('Saved');
+				$modalInstance.close(commitment);
+			});
+		}
 	};
 
 	$scope.cancel = function () {
