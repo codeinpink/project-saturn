@@ -11,7 +11,17 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'D
 
 		$scope.allFeatures = Feature.query();
 
-		$scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers');
+		$scope.dtOptions = DTOptionsBuilder.newOptions()
+		.withPaginationType('full_numbers')
+		.withTableTools('/static/lib/copy_csv_xls_pdf.swf')
+		.withTableToolsButtons([
+            'copy',
+            'print', {
+                'sExtends': 'collection',
+                'sButtonText': 'Save',
+                'aButtons': ['csv', 'xls', 'pdf']
+            }
+        ]);
 
     	$scope.dtColumnDefs = [
 			DTColumnDefBuilder.newColumnDef(0),
