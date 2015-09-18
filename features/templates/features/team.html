@@ -10,7 +10,11 @@ grey-bg
 		<div class="row">
 			<div>
 				<h1 style="display: inline-block;">{{ team.name }} </h1>
-				<button type="button" id="psi-capacity" ng-click="addTeamInfo()" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i></button>
+				<button type="button" id="psi-capacity" ng-click="addTeamInfo()" class="btn btn-success"
+				ng-class="{'btn-primary': isPSICapacitySet(), 'btn-danger': !isPSICapacitySet()}"
+				tooltip="Add Team's PSI Capacity">
+					<i class="glyphicon glyphicon-edit"></i>
+				</button>
 			</div>
 			<div id = "teamId" style="display: none;" >{{team.id}}</div>
 			<button type="button" style="margin: 30px 0;" ng-click="addCommitment()" class="btn btn-success">Add New Commitments</button>
@@ -36,19 +40,31 @@ grey-bg
 						<td >{[{ commitment.stop }]}</td>
 						<td >{[{ commitment.notes }]}</td>
 						<td>
-							<button type="button" ng-click="showRisks(commitment)" class="btn btn-default">
+							<button type="button" ng-click="showRisks(commitment)" class="btn btn-default"
+							tooltip="Show Risks for This Commitment">
 								Risks
 								<span ng-if="commitment.risk_set.length > 0">({[{ commitment.risk_set.length }]})</span>
 							</button>
 						</td>
 						<td>
-							<button type="button" ng-click="showDependencies(commitment)" class="btn btn-default">
+							<button type="button" ng-click="showDependencies(commitment)" class="btn btn-default"
+							tooltip="Show Dependencies for This Commitment">
 								Dependencies
 								<span ng-if="commitment.dependency_set.length > 0">({[{ commitment.dependency_set.length }]})</span>
 							</button>
 						</td>
-						<td><button type="button" ng-click="editCommitment('', commitment)" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></button></td>
-						<td><button type="button" ng-click="showConfirmationPrompt('', commitment)" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button></td>
+						<td>
+							<button type="button" ng-click="editCommitment('', commitment)" class="btn btn-warning"
+							tooltip="Edit Commitment">
+								<i class="glyphicon glyphicon-edit"></i>
+							</button>
+						</td>
+						<td>
+							<button type="button" ng-click="showConfirmationPrompt('', commitment)" class="btn btn-danger"
+							tooltip="Delete Commitment">
+								<i class="glyphicon glyphicon-trash"></i>
+							</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>

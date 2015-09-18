@@ -37,6 +37,11 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'D
 			DTColumnDefBuilder.newColumnDef(10).notSortable(),
 		];
 
+		$scope.isPSICapacitySet = function() {
+			return $scope.teamObj.bug_buffer && $scope.teamObj.previous_unplanned_work &&
+			$scope.teamObj.planned_unplanned_work && $scope.teamObj.confidence;
+		};
+
 		$scope.addTeamInfo = function() {
 			var modalInstance = $modal.open({
 				animation: true,
