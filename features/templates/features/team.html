@@ -23,12 +23,13 @@ grey-bg
 				</button>
 			</div>
 			<div id = "teamId" style="display: none;" >{{team.id}}</div>
-			<button type="button" style="margin: 30px 0;" ng-click="addCommitment()" class="btn btn-success">Add New Commitments</button>
+			<button type="button" style="margin: 30px 0;" ng-click="addCommitment()" class="btn btn-success">Add New Commitment</button>
 		</div>
 		<div class="row">
 			<table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table row-border table-hover table-striped">
 				<thead>
 					<tr>
+						<th style="display: none;">JIRA/Clarity ID</th>
 						<th ng-repeat="col in columns">{[{col}]}</th>
 						<th></th>
 						<th></th>
@@ -38,6 +39,7 @@ grey-bg
 				</thead>
 				<tbody>
 					<tr ng-repeat="commitment in teamObj.commitment_set">
+						<td style="display: none;">{[{ commitment.feature.clarity_or_jira_id }]}</td>
 						<td >{[{ commitment.name }]}</td>
 						<td >{[{ commitment.feature.name }]}</td>
 						<td >{[{ commitment.status }]}</td>

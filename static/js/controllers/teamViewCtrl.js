@@ -1,7 +1,7 @@
 var TEAM_COLUMN_LABELS = ['Commitment','Feature', 'Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
 
-saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'Team', 'Feature', 'Commitment',
-	function($scope, $http, $resource, $modal, DTOptionsBuilder, DTColumnDefBuilder, Team, Feature, Commitment) {
+saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', '$window', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'Team', 'Feature', 'Commitment',
+	function($scope, $http, $resource, $modal, $window, DTOptionsBuilder, DTColumnDefBuilder, Team, Feature, Commitment) {
 		$scope.teamId = $('#teamId').html();
 		$scope.columns = TEAM_COLUMN_LABELS;
 
@@ -31,10 +31,11 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'D
 			DTColumnDefBuilder.newColumnDef(4),
 			DTColumnDefBuilder.newColumnDef(5),
 			DTColumnDefBuilder.newColumnDef(6),
-			DTColumnDefBuilder.newColumnDef(7).notSortable(),
+			DTColumnDefBuilder.newColumnDef(7),
 			DTColumnDefBuilder.newColumnDef(8).notSortable(),
 			DTColumnDefBuilder.newColumnDef(9).notSortable(),
 			DTColumnDefBuilder.newColumnDef(10).notSortable(),
+			DTColumnDefBuilder.newColumnDef(11).notSortable(),
 		];
 
 		$scope.isPSICapacitySet = function() {
