@@ -25,10 +25,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Confidence:</label>
+                    <label class="control-label col-sm-3">Confidence:<span ng-show="!team.confidence">*</span></label>
                     <div class="col-sm-9">
                         <input type="number" step="any" min="0" ng-model="team.confidence" class="form-control" value="{[{ team.confidence }]}">
-                        <span ng-show="!team.confidence">*</span>
                     </div>
                 </div>
             </form>
