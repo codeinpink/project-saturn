@@ -34,7 +34,10 @@
                         <th>
                             <div class="form-group">
                                 <label>
-                                    <button type="button" class="btn btn-success" ng-click="saveDependency(dependency)"><i class="glyphicon glyphicon-plus"></i></button>
+                                    <button type="button" class="btn btn-success" ng-click="saveDependency(dependency)"
+                                    tooltip="Add Dependency">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                    </button>
                                 </label>
                             </div>
                         </th>
@@ -52,8 +55,18 @@
                         <td>{[{ dependency.name }]}</td>
                         <td>{[{ dependency.dependent_on.name }]}</td>
                         <td colspan="2">{[{ dependency.notes }]}</td>
-                        <td><button type="button" ng-click="editDependency('', dependency)" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></button></td>
-                        <td><button type="button" ng-click="showConfirmationPrompt(dependency)" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button></td>
+                        <td>
+                            <button type="button" ng-click="editDependency('', dependency)" class="btn btn-warning"
+                            tooltip="Edit Dependency">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" ng-click="showConfirmationPrompt(dependency)" class="btn btn-danger"
+                            tooltip="Delete Dependency">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

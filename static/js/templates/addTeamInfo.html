@@ -1,0 +1,40 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add PSI Capacity</h4>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Bug Buffer:</label>
+                    <div class="col-sm-9">
+                        <input type="number" step="any" ng-model="team.bug_buffer" class="form-control" value="{[{ team.bug_buffer }]}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Previous PSI Unplanned Work:</label>
+                    <div class="col-sm-9">
+                        <input type="number" step="any" ng-model="team.previous_unplanned_work" class="form-control" value="{[{ team.previous_unplanned_work }]}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Planned Unplanned Work:</label>
+                    <div class="col-sm-9">
+                        <input type="number" step="any" ng-model="team.planned_unplanned_work" class="form-control" value="{[{ team.planned_unplanned_work }]}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Confidence:</label>
+                    <div class="col-sm-9">
+                        <input type="number" step="any" ng-model="team.confidence" class="form-control" value="{[{ team.confidence }]}">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="saveTeamInfo()">Save</button>
+        <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

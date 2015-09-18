@@ -11,7 +11,17 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'D
 
 		$scope.allFeatures = Feature.query();
 
-		$scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers');
+		$scope.dtOptions = DTOptionsBuilder.newOptions()
+		.withPaginationType('full_numbers')
+		.withTableTools('/static/lib/copy_csv_xls_pdf.swf')
+		.withTableToolsButtons([
+            'copy',
+            'print', {
+                'sExtends': 'collection',
+                'sButtonText': 'Save',
+                'aButtons': ['csv', 'xls', 'pdf']
+            }
+        ]);
 
     	$scope.dtColumnDefs = [
 			DTColumnDefBuilder.newColumnDef(0),
@@ -26,6 +36,29 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'D
 			DTColumnDefBuilder.newColumnDef(9).notSortable(),
 			DTColumnDefBuilder.newColumnDef(10).notSortable(),
 		];
+
+		$scope.isPSICapacitySet = function() {
+			return $scope.teamObj.bug_buffer && $scope.teamObj.previous_unplanned_work &&
+			$scope.teamObj.planned_unplanned_work && $scope.teamObj.confidence;
+		};
+
+		$scope.addTeamInfo = function() {
+			var modalInstance = $modal.open({
+				animation: true,
+				templateUrl: '/static/js/templates/addTeamInfo.html',
+				controller: 'TeamInfoCtrl',
+				size: '',
+				resolve: {
+					team: function() {
+						return $scope.teamObj;
+					}
+				}
+		    });
+
+			modalInstance.result.then(function(team) {
+				$scope.teamObj = team;
+			});
+		};
 
 		$scope.addCommitment = function() {
 			var modalInstance = $modal.open({

@@ -7,11 +7,11 @@
         <div class="container-fluid">
             <table class="table row-border table-striped">
                 <thead>
-                    <tr>
+                    <tr ng-form name="newRisk">
                         <th>
-                            <div class="form-group">
+                            <div class="form-group" ng-class="{'has-error': newRisk.name.$dirty && newRisk.name.$invalid, 'has-success': newRisk.name.$dirty && !newRisk.name.$invalid}">
                                 <label>
-                                    <input class="form-control" type="text" name="name" placeholder="Risk Name" ng-model="risk.name">
+                                    <input class="form-control" type="text" name="name" placeholder="Risk Name" ng-model="risk.name" required>
                                 </label>
                             </div>
                         </th>
@@ -19,7 +19,7 @@
                             <div class="form-group">
                                 <label>
                                     <select class="form-control" name="probability" ng-model="risk.probability"
-                                        ng-options="opt for opt in generalOptions">
+                                        ng-options="opt for opt in generalOptions" required>
                                     </select>
                                 </label>
                             </div>
@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label>
                                     <select class="form-control" name="impact" ng-model="risk.impact"
-                                        ng-options="opt for opt in generalOptions">
+                                        ng-options="opt for opt in generalOptions" required>
                                     </select>
                                 </label>
                             </div>
@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label>
                                     <select class="form-control" name="severity" ng-model="risk.severity"
-                                        ng-options="opt for opt in generalOptions">
+                                        ng-options="opt for opt in generalOptions" required>
                                     </select>
                                 </label>
                             </div>
@@ -46,7 +46,7 @@
                             <div class="form-group">
                                 <label>
                                     <select class="form-control" name="resolution" ng-model="risk.resolution"
-                                        ng-options="opt for opt in resolutionOptions">
+                                        ng-options="opt for opt in resolutionOptions" required>
                                     </select>
                                 </label>
                             </div>
@@ -61,7 +61,10 @@
                         <th>
                             <div class="form-group">
                                 <label>
-                                    <button type="button" class="btn btn-success" ng-click="saveRisk(risk)"><i class="glyphicon glyphicon-plus"></i></button>
+                                    <button type="button" class="btn btn-success" ng-click="saveRisk(risk)"
+                                    tooltip="Add Risk">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                    </button>
                                 </label>
                             </div>
                         </th>
@@ -85,8 +88,18 @@
                         <td>{[{ risk.severity }]}</td>
                         <td>{[{ risk.resolution }]}</td>
                         <td>{[{ risk.comments }]}</td>
-                        <td><button type="button" ng-click="editRisk('', risk, commitment.name)" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></button></td>
-                        <td><button type="button" ng-click="showConfirmationPrompt(risk)" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button></td>
+                        <td>
+                            <button type="button" ng-click="editRisk('', risk, commitment.name)" class="btn btn-warning"
+                            tooltip="Edit Risk">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" ng-click="showConfirmationPrompt(risk)" class="btn btn-danger"
+                            tooltip="Delete Risk">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

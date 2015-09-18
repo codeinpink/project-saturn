@@ -61,7 +61,12 @@ section.jumbotron {
     color: #d9534f;
 }
 
+
 td.ng-binding{
     max-width: 10em;
     word-wrap:break-word;
+}
+
+#psi-capacity {
+    margin: 10px 10px 25px 15px;
 }

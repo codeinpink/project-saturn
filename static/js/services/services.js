@@ -1,5 +1,9 @@
 saturnApp.factory('Team', function($resource) {
-    return $resource('/api/teams/:id/');
+    return $resource('/api/teams/:id/', {id: '@id'}, {
+        update: {
+            method: 'PUT'
+        }
+    });
 });
 
 saturnApp.factory('Feature', function($resource) {

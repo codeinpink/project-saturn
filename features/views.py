@@ -11,7 +11,7 @@ def index(request):
 @ensure_csrf_cookie
 def team(request, slug):
     team = get_object_or_404(Team, slug=slug)
-    return render(request, 'features/team.html', {'team_id': team.id})
+    return render(request, 'features/team.html', {'team': team})
 
 def all_teams(request):
     return render(request, 'features/all.html', {})
