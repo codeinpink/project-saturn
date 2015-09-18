@@ -39,8 +39,7 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', '$
 		];
 
 		$scope.isPSICapacitySet = function() {
-			psiCapacitySet = $scope.teamObj.bug_buffer && $scope.teamObj.previous_unplanned_work &&
-			$scope.teamObj.planned_unplanned_work && $scope.teamObj.confidence;
+			psiCapacitySet = $scope.teamObj.confidence;
 			return psiCapacitySet;
 		};
 
