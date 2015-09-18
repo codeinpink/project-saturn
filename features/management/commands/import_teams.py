@@ -2,14 +2,15 @@ from django.core.management.base import BaseCommand
 import csv
 from features.models import Team
 
-FILE_NAME = 'Teams_Import.csv'
+FILE_NAME = 'teamCSV.csv'
 
 class Command(BaseCommand):
     help = 'Imports teams into database from CSV file'
 
     def handle(self, *args, **options):
         with open(FILE_NAME, 'r') as teams:
-            reader = csv.reader(teams, delimiter=';')
+            teams.next() # skip header
+            reader = csv.reader(teams, delimiter=',')
 
             for row in reader:
                 try:
