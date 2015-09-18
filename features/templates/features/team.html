@@ -85,4 +85,14 @@ grey-bg
 <script type="text/javascript" src = "{% static "js/controllers/TeamInfoCtrl.js" %}"></script>
 <script type="text/javascript" src = "{% static "js/controllers/RiskCtrl.js" %}"></script>
 <script type="text/javascript" src = "{% static "js/controllers/DependencyCtrl.js" %}"></script>
+<script language="JavaScript">
+  window.onbeforeunload = confirmExit;
+  function confirmExit()
+  {
+  	if (!psiCapacitySet){
+		$("#psi-capacity").click();
+  		return "You have not entered your team PSI information."
+  	}
+  }
+</script>
 {% endblock script %}

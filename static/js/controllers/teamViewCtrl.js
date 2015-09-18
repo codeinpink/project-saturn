@@ -1,5 +1,5 @@
 var TEAM_COLUMN_LABELS = ['Commitment','Feature', 'Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
-
+var psiCapacitySet = false;
 saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', '$window', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'Team', 'Feature', 'Commitment',
 	function($scope, $http, $resource, $modal, $window, DTOptionsBuilder, DTColumnDefBuilder, Team, Feature, Commitment) {
 		$scope.teamId = $('#teamId').html();
@@ -39,7 +39,8 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', '$
 		];
 
 		$scope.isPSICapacitySet = function() {
-			return $scope.teamObj.confidence > 0;
+			psiCapacitySet = $scope.teamObj.confidence;
+			return psiCapacitySet;
 		};
 
 		$scope.addTeamInfo = function() {
