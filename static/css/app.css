@@ -9,7 +9,7 @@
 }
 
 .grey-bg {
-    background: url(/static/bg_world_map.png);
+    background: url(/static/bg_world_map.png) no-repeat center top fixed;
 }
 
 .saturnFont {
@@ -59,4 +59,9 @@ section.jumbotron {
 .glyphicon.glyphicon-alert {
     font-size: 75px;
     color: #d9534f;
+}
+
+td.ng-binding{
+    max-width: 10em;
+    word-wrap:break-word;
 }

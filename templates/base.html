@@ -6,9 +6,11 @@
         <title>Commitment Tool</title>
 
         <link href="https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900" rel="stylesheet" type="text/css">
+        
+        
+        <link rel="stylesheet" type="text/css" href="{% static "lib/bootstrap-3.3.5-dist/css/bootstrap.min.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "lib/datatables.min.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "lib/dataTables.tableTools.css" %}">
-        <link rel="stylesheet" type="text/css" href="{% static "lib/bootstrap-3.3.5-dist/css/bootstrap.min.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "css/app.css" %}">
 
         <script type="text/javascript" src = "{% static "lib/jquery-2.1.4.min.js" %}"></script>
@@ -27,8 +29,6 @@
         <script type="text/javascript" src = "{% static "js/controllers/teamViewCtrl.js" %}"></script>
         <script type="text/javascript" src = "{% static "js/controllers/homeCtrl.js" %}"></script>
         <script type="text/javascript" src = "{% static "js/services/services.js" %}"></script>
-
-        
 
     </head>
     <body ng-app = "missionControlApp" class="{% block bg %}{% endblock bg %}">

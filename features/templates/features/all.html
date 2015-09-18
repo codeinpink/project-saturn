@@ -11,105 +11,106 @@ grey-bg
 	</a>
 </section>
 
-<div class ="container white-bg" ng-controller = "allViewCtrl as allCtrl">
-	<tabset >
-		<tab heading="All Features">
-			<div style="margin-top: 10px;">
+<div class ="container white-bg" style="margin-top: 60px;" >
+	<div class = "row">
+		<tabset >
+			<tab heading="All Features">
+				<div style="margin-top: 10px;" ng-controller = "commitTabCtrl as commit">
+					<div>
+						<div class="row">
+							<button style="margin: 30px 0;" type="button" ng-click="reloadCommits()" class="btn btn-success">Refresh</button>
+						</div>
+						<div class="row">
+							<table id = "allCommits" datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table row-border table-hover table-striped">
+								<thead>
+									<tr>
+										<th ng-repeat="col in feature_columns">{[{col}]}</th>
+										<th style = "display: none" >database id</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="commitment in commitments">
+										<td >{[{ commitment.feature.name }]}</td>
+										<td >{[{ commitment.feature.theme }]}</td>
+										<td >{[{ commitment.name }]}</td>
+										<td >{[{ commitment.team.name }]}</td>
+										<td >{[{ commitment.status }]}</td>
+										<td >{[{ commitment.done_definition }]}</td>
+										<td >{[{ commitment.start }]}</td>
+										<td >{[{ commitment.stop }]}</td>
+										<td >{[{ commitment.notes }]}</td>
+										<td style = "display: none">{[{ commitment.feature.clarity_or_jira_id }]}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div> 
+			</tab>
+		    <tab heading="Risks"  >
+		    	<div style="margin-top: 10px;" ng-controller = "riskTabCtrl as risk">
+					<div>
+						<div class="row">
+							<button style="margin: 30px 0;" type="button" ng-click="reloadCommits()" class="btn btn-success">Refresh</button>
+						</div>
+						<div class="row">
+							<table id = "allRisks" datatable="ng" dt-options="riskDtOptions" dt-column-defs="riskDtColumnDefs" class="table row-border table-hover table-striped">
+								<thead>
+									<tr>
+										<th ng-repeat="col in risk_columns">{[{col}]}</th>
+										<th style = "display: none" >database id</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="risk in risks">
+										<td >{[{ risk.commitment.feature.name }]}</td>
+										<td >{[{ risk.commitment.name }]}</td>
+										<td >{[{ risk.name }]}</td>
+										<td >{[{ risk.probability }]}</td>
+										<td >{[{ risk.impact }]}</td>
+										<td >{[{ risk.severity }]}</td>
+										<td >{[{ risk.resolution }]}</td>
+										<td >{[{ risk.notes }]}</td>
+										<td style = "display: none">{[{ risk.commitment.feature.clarity_or_jira_id }]}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div> 
+		    </tab>
+			<tab heading="Dependancies" > 
+				<div style="margin-top: 10px;" ng-controller = "dependencyTabCtrl as dependency">
 				<div>
 					<div class="row">
-						<button style="margin: 30px 0;" type="button" ng-click="reloadCommits()" class="btn btn-success">Refresh</button>
+						<button style="margin: 30px 0;" type="button" ng-click="reloadDependencies()" class="btn btn-success">Refresh</button>
 					</div>
 					<div class="row">
-						<table id = "allCommits" datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" dt-instance="dtInstance" class="table row-border table-hover table-striped">
+						<table id = "allDependencies" datatable="ng" dt-options="depenDtOptions" dtInstance = "dependencyTb"  dt-column-defs="depenDtColumnDefs" class="table row-border table-hover table-striped">
 							<thead>
 								<tr>
-									<th ng-repeat="col in columns">{[{col}]}</th>
+									<th ng-repeat="col in dependency_columns">{[{col}]}</th>
+									<th style = "display: none" >database id</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="commitment in commitments">
-									<td >{[{ commitment.feature.name }]}</td>
-									<td >{[{ commitment.feature.theme }]}</td>
-									<td >{[{ commitment.name }]}</td>
-									<td >{[{ commitment.team.name }]}</td>
-									<td >{[{ commitment.status }]}</td>
-									<td >{[{ commitment.done_definition }]}</td>
-									<td >{[{ commitment.start }]}</td>
-									<td >{[{ commitment.stop }]}</td>
-									<td >{[{ commitment.notes }]}</td>
+								<tr ng-repeat="dependency in dependencies">
+									<td >{[{ dependency.name }]}</td>
+									<td >{[{ dependency.commitment.name }]}</td>
+									<td >{[{ dependency.commitment.feature.name }]}</td>
+									<td >{[{ dependency.dependent_on.name }]}</td>
+									<td >{[{ dependency.notes }]}</td>
+									<td style = "display: none">{[{ dependency.commitment.feature.clarity_or_jira_id }]}</td>
 								</tr>
 							</tbody>
+							
 						</table>
 					</div>
+				</div> 
 				</div>
-			</div> 
-		</tab>
-	    <tab heading="Risks">
-	    	<div style="margin-top: 10px;">
-				<div>
-					<div class="row">
-						<button style="margin: 30px 0;" type="button" ng-click="reloadCommits()" class="btn btn-success">Refresh</button>
-					</div>
-					<div class="row">
-						<table id = "riskTable" datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" dt-instance="dtInstance1" class="table row-border table-hover table-striped">
-							<thead>
-								<tr>
-									<th ng-repeat="col in columns">{[{col}]}</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="commitment in commitments">
-									<td >{[{ commitment.feature.name }]}</td>
-									<td >{[{ commitment.feature.theme }]}</td>
-									<td >{[{ commitment.name }]}</td>
-									<td >{[{ commitment.team.name }]}</td>
-									<td >{[{ commitment.status }]}</td>
-									<td >{[{ commitment.done_definition }]}</td>
-									<td >{[{ commitment.start }]}</td>
-									<td >{[{ commitment.stop }]}</td>
-									<td >{[{ commitment.notes }]}</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div> 
-	    </tab>
-		<tab heading="Dependancies" >
-			<div style="margin-top: 10px;">
-				<div>
-					<div class="row">
-						<button style="margin: 30px 0;" type="button" ng-click="reloadCommits()" class="btn btn-success">Refresh</button>
-					</div>
-					<div class="row">
-						<table id = "dependencyTable" datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" dt-instance="dtInstance2" class="table row-border table-hover table-striped">
-							<thead>
-								<tr>
-									<th ng-repeat="col in columns">{[{col}]}</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="commitment in commitments">
-									<td >{[{ commitment.feature.name }]}</td>
-									<td >{[{ commitment.feature.theme }]}</td>
-									<td >{[{ commitment.name }]}</td>
-									<td >{[{ commitment.team.name }]}</td>
-									<td >{[{ commitment.status }]}</td>
-									<td >{[{ commitment.done_definition }]}</td>
-									<td >{[{ commitment.start }]}</td>
-									<td >{[{ commitment.stop }]}</td>
-									<td >{[{ commitment.notes }]}</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div> 
-		</tab>
-	    
-	    
-  	</tabset>
-
+			</tab>
+	  	</tabset>
+	</div>
 
 </div>
 
