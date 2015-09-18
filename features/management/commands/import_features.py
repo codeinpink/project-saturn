@@ -2,12 +2,12 @@ from django.core.management.base import BaseCommand
 import csv
 from features.models import Feature, Team
 
-FILE_NAME = 'Features_Import.csv'
+FILE_NAME = 'FeatureList.csv'
 
-ID = 0
+ID = 2
 FEATURE = 1
-TEAMS = 2
-THEME = 3
+TEAMS = 3
+THEME = 0
 
 class Command(BaseCommand):
     help = 'Imports features into database from CSV file'
