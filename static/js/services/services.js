@@ -41,3 +41,11 @@ saturnApp.factory('Dependency', function($resource) {
 saturnApp.factory('Commitments', function($resource) {
     return $resource('/api/commitments/');
 });
+
+saturnApp.factory('Risks', function($resource) {
+    return $resource('/api/risks/');
+});
+
+saturnApp.factory('Dependencies', function($resource) {
+    return $resource('/api/dependencies/');
+});
