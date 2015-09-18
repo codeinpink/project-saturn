@@ -8,7 +8,8 @@ grey-bg
 <div style="margin-top: 60px;">
 	<div class="container white-bg" ng-controller="teamViewCtrl as teamCtrl">
 		<div class="row">
-			<div id = "teamId" style="display: none;" >{{team_id}}</div>
+			<h1>{{ team.name }}</h1>
+			<div id = "teamId" style="display: none;" >{{team.id}}</div>
 			<button type="button" style="margin: 30px 0;" ng-click="addCommitment()" class="btn btn-success">Add New Commitments</button>
 		</div>
 		<div class="row">

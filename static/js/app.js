@@ -10,11 +10,11 @@ saturnApp.config(function($resourceProvider) {
 });
 
 var PSI_CYCLES = [
-    '18-1',
-    '18-2',
-    '18-3',
-    '18-4',
-    '18-5'
+    '19-1',
+    '19-2',
+    '19-3',
+    '19-4',
+    '19-5'
 ];
 
 var COMMITMENT_STATUS_OPTIONS = [
