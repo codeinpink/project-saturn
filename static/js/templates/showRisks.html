@@ -8,63 +8,65 @@
             <table class="table row-border table-striped">
                 <thead>
                     <tr>
-                        <th>
-                            <div class="form-group">
-                                <label>
-                                    <input class="form-control" type="text" name="name" placeholder="Risk Name" ng-model="risk.name">
-                                </label>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="form-group">
-                                <label>
-                                    <select class="form-control" name="probability" ng-model="risk.probability"
-                                        ng-options="opt for opt in generalOptions">
-                                    </select>
-                                </label>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="form-group">
-                                <label>
-                                    <select class="form-control" name="impact" ng-model="risk.impact"
-                                        ng-options="opt for opt in generalOptions">
-                                    </select>
-                                </label>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="form-group">
-                                <label>
-                                    <select class="form-control" name="severity" ng-model="risk.severity"
-                                        ng-options="opt for opt in generalOptions">
-                                    </select>
-                                </label>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="form-group">
-                                <label>
-                                    <select class="form-control" name="resolution" ng-model="risk.resolution"
-                                        ng-options="opt for opt in resolutionOptions">
-                                    </select>
-                                </label>
-                            </div>
-                        </th>
-                        <th colspan="2">
-                            <div class="form-group">
-                                <label>
-                                    <input class="form-control" type="text" name="comments" placeholder="Comments">
-                                </label>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="form-group">
-                                <label>
-                                    <button type="button" class="btn btn-success" ng-click="saveRisk(risk)"><i class="glyphicon glyphicon-plus"></i></button>
-                                </label>
-                            </div>
-                        </th>
+                        <form>
+                            <th>
+                                <div class="form-group">
+                                    <label>
+                                        <input class="form-control" type="text" name="name" placeholder="Risk Name" ng-model="risk.name" required>
+                                    </label>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    <label>
+                                        <select class="form-control" name="probability" ng-model="risk.probability"
+                                            ng-options="opt for opt in generalOptions" required>
+                                        </select>
+                                    </label>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    <label>
+                                        <select class="form-control" name="impact" ng-model="risk.impact"
+                                            ng-options="opt for opt in generalOptions" required>
+                                        </select>
+                                    </label>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    <label>
+                                        <select class="form-control" name="severity" ng-model="risk.severity"
+                                            ng-options="opt for opt in generalOptions" required>
+                                        </select>
+                                    </label>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    <label>
+                                        <select class="form-control" name="resolution" ng-model="risk.resolution"
+                                            ng-options="opt for opt in resolutionOptions" required>
+                                        </select>
+                                    </label>
+                                </div>
+                            </th>
+                            <th colspan="2">
+                                <div class="form-group">
+                                    <label>
+                                        <input class="form-control" type="text" name="comments" placeholder="Comments">
+                                    </label>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    <label>
+                                        <button type="button" class="btn btn-success" ng-click="saveRisk(risk)"><i class="glyphicon glyphicon-plus"></i></button>
+                                    </label>
+                                </div>
+                            </th>
+                        </form>
                     </tr>
                     <tr>
                         <th>Risk</th>
