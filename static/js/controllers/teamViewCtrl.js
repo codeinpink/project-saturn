@@ -27,6 +27,24 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', 'D
 			DTColumnDefBuilder.newColumnDef(10).notSortable(),
 		];
 
+		$scope.addTeamInfo = function() {
+			var modalInstance = $modal.open({
+				animation: true,
+				templateUrl: '/static/js/templates/addTeamInfo.html',
+				controller: 'TeamInfoCtrl',
+				size: '',
+				resolve: {
+					team: function() {
+						return $scope.teamObj;
+					}
+				}
+		    });
+
+			modalInstance.result.then(function(team) {
+				$scope.teamObj = team;
+			});
+		};
+
 		$scope.addCommitment = function() {
 			var modalInstance = $modal.open({
 				animation: true,

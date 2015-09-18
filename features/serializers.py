@@ -33,7 +33,7 @@ class FeatureSerializer(serializers.ModelSerializer):
         depth = 2
 
 class TeamSerializer(serializers.ModelSerializer):
-    commitment_set = CommitmentSerializer(many=True)
+    commitment_set = CommitmentSerializer(many=True, read_only=True)
 
     class Meta:
         model = Team
