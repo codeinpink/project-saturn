@@ -8,10 +8,12 @@ grey-bg
 <div style="margin-top: 60px;">
 	<div class="container white-bg" ng-controller="teamViewCtrl as teamCtrl">
 		<div class="row">
-			<h1>{{ team.name }}</h1>
+			<div>
+				<h1 style="display: inline-block;">{{ team.name }} </h1>
+				<button type="button" id="psi-capacity" ng-click="addTeamInfo()" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i></button>
+			</div>
 			<div id = "teamId" style="display: none;" >{{team.id}}</div>
 			<button type="button" style="margin: 30px 0;" ng-click="addCommitment()" class="btn btn-success">Add New Commitments</button>
-			<button type="button" style="margin: 30px 0;" ng-click="addTeamInfo()" class="btn btn-primary pull-right">Add Team Info</button>
 		</div>
 		<div class="row">
 			<table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table row-border table-hover table-striped">
@@ -33,8 +35,18 @@ grey-bg
 						<td >{[{ commitment.start }]}</td>
 						<td >{[{ commitment.stop }]}</td>
 						<td >{[{ commitment.notes }]}</td>
-						<td><button type="button" ng-click="showRisks(commitment)" class="btn btn-default">Risks</button></td>
-						<td><button type="button" ng-click="showDependencies(commitment)" class="btn btn-default">Dependencies</button></td>
+						<td>
+							<button type="button" ng-click="showRisks(commitment)" class="btn btn-default">
+								Risks
+								<span ng-if="commitment.risk_set.length > 0">({[{ commitment.risk_set.length }]})</span>
+							</button>
+						</td>
+						<td>
+							<button type="button" ng-click="showDependencies(commitment)" class="btn btn-default">
+								Dependencies
+								<span ng-if="commitment.dependency_set.length > 0">({[{ commitment.dependency_set.length }]})</span>
+							</button>
+						</td>
 						<td><button type="button" ng-click="editCommitment('', commitment)" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></button></td>
 						<td><button type="button" ng-click="showConfirmationPrompt('', commitment)" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button></td>
 					</tr>

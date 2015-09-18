@@ -60,3 +60,7 @@ section.jumbotron {
     font-size: 75px;
     color: #d9534f;
 }
+
+#psi-capacity {
+    margin: 10px 10px 25px 15px;
+}
