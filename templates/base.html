@@ -6,8 +6,8 @@
         <title>Commitment Tool</title>
 
         <link href="https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900" rel="stylesheet" type="text/css">
-        
-        
+
+
         <link rel="stylesheet" type="text/css" href="{% static "lib/bootstrap-3.3.5-dist/css/bootstrap.min.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "lib/datatables.min.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "lib/dataTables.tableTools.css" %}">
@@ -32,6 +32,8 @@
 
     </head>
     <body ng-app = "missionControlApp" class="{% block bg %}{% endblock bg %}">
+        {% block nav %}
+        {% endblock nav %}
         {% block content %}
 
 

@@ -3,13 +3,11 @@
 grey-bg
 {% endblock %}
 
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
+
 {% block content %}
-<section>
-	<a href="/">
-	<button type="button" style="margin: 10px 30px;" class="btn btn-default">
-		<span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
-	</a>
-</section>
 
 <div class ="container white-bg" style="margin-top: 60px;" >
 	<div class = "row">
@@ -45,7 +43,7 @@ grey-bg
 							</table>
 						</div>
 					</div>
-				</div> 
+				</div>
 			</tab>
 		    <tab heading="Risks"  >
 		    	<div style="margin-top: 10px;" ng-controller = "riskTabCtrl as risk">
@@ -77,9 +75,9 @@ grey-bg
 							</table>
 						</div>
 					</div>
-				</div> 
+				</div>
 		    </tab>
-			<tab heading="Dependancies" > 
+			<tab heading="Dependancies" >
 				<div style="margin-top: 10px;" ng-controller = "dependencyTabCtrl as dependency">
 				<div>
 					<div class="row">
@@ -103,10 +101,10 @@ grey-bg
 									<td style = "display: none">{[{ dependency.commitment.feature.clarity_or_jira_id }]}</td>
 								</tr>
 							</tbody>
-							
+
 						</table>
 					</div>
-				</div> 
+				</div>
 				</div>
 			</tab>
 	  	</tabset>

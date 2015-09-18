@@ -4,13 +4,11 @@
 grey-bg
 {% endblock %}
 
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock %}
 {% block content %}
-<section>
-	<a href="/">
-	<button type="button" style="margin: 10px 30px;" class="btn btn-default">
-		<span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
-	</a>
-</section>
+
 <div style="margin-top: 60px;">
 	<div class="container white-bg" ng-controller="teamViewCtrl as teamCtrl">
 		<div class="row">
