@@ -1,19 +1,19 @@
 .space-bg {
-    background: url(https://novoolharblog.files.wordpress.com/2014/03/saturn.jpg) no-repeat center top fixed;
+    background: url(/static/bg_world_map.png) no-repeat center top fixed;
     height: 100%;
 }
 
 .white-bg {
     background: #FFF;
-    padding: 70px 50px;
+    padding: 5px 50px;
 }
 
 .grey-bg {
-    background: #EEE;
+    background: url(/static/bg_world_map.png);
 }
 
 .saturnFont {
-    color:#FFF;
+    color:#4E4E4E;
     font-family: 'Orbitron', cursive;
     text-align: center;
 }
