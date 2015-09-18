@@ -7,7 +7,16 @@ saturnApp.config(function($interpolateProvider) {
 
 saturnApp.config(function($resourceProvider) {
   $resourceProvider.defaults.stripTrailingSlashes = false;
+
+        
+
 });
+saturnApp.config(['$resourceProvider', '$httpProvider',
+    function($resourceProvider, $httpProvider) {
+        $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+        $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    }
+]);
 
 var PSI_CYCLES = [
     '19-1',
