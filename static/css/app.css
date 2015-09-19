@@ -1,38 +1,39 @@
-.space-bg {
+.map-bg {
     background: url(/static/bg_world_map.png) no-repeat center top fixed;
     height: 100%;
 }
 
-.white-bg {
-    background: #FFF;
-    padding: 5px 50px;
+.home-buttons {
+    margin-top: 20px;
 }
 
-.grey-bg {
-    background: url(/static/bg_world_map.png) no-repeat center top fixed;
-}
-
-.saturnFont {
-    color:#4E4E4E;
-    font-family: 'Orbitron', cursive;
-    text-align: center;
-}
-
-section.jumbotron {
-	margin-top:10em;
-    text-align: center;
-    height:400px;
-
+#team-btn {
+    margin: 0 10px;
 }
 
 .jumbotron {
     background: transparent;
+    margin-top: 10em;
+    text-align: center;
+    height: 400px;
 }
 
-.jumbotron h1, .jumbotron p, .jumbotron blockquote {
-    color: #FFF;
+.jumbotron h1, .navbar-brand, .navbar-nav li {
+    font-family: 'Orbitron', cursive;
 }
 
+.jumbotron h1, .navbar-default .navbar-brand {
+    color: #4E4E4E;
+}
+
+.navbar-default .navbar-brand {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.navbar-nav li {
+    font-size: 18px;
+}
 
 #team-name-autocomplete {
     margin: 40px;
@@ -62,9 +63,9 @@ section.jumbotron {
 }
 
 
-td.ng-binding{
+td.ng-binding {
     max-width: 10em;
-    word-wrap:break-word;
+    word-wrap: break-word;
 }
 
 #psi-capacity {

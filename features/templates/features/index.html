@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block bg %}
-space-bg
+map-bg
 {% endblock bg %}
 
 {% block title %}
@@ -8,12 +8,12 @@ Home
 {% endblock title %}
 
 {% block content %}
-
 <section class="jumbotron" ng-controller="homeCtrl as home">
-	<h1><span class="saturnFont">PSI Planning Tool</span></h1>
-	<div class="col-sm-offset-4 col-sm-4">
-		<button type="button" class="btn btn-default btn-lg" ng-click="hideInput=false">Show Me My Team</button>
-		<a href="{% url 'all_teams' %}" class="btn btn-default btn-lg">I want to see ALL Commitments</a>
+	<h1 class="text-center">PSI Planning Tool</h1>
+
+	<div class="center-block home-buttons">
+		<button type="button" id="team-btn" class="btn btn-default btn-lg" ng-click="hideInput=false">Show Me My Team</button>
+		<a href="{% url 'all_teams' %}" class="btn btn-default btn-lg">See All Commitments</a>
 		<br>
 		<div id="team-name-autocomplete" class="form-inline center-block" ng-hide="hideInput">
 			<span angucomplete-alt id="team-name" type="text" placeholder="Team Name" input-class="form-control input-lg"
@@ -23,5 +23,4 @@ Home
 
 	</div>
 </section>
-
 {% endblock %}

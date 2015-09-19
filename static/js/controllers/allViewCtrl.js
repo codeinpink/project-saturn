@@ -137,7 +137,7 @@ saturnApp.controller("dependencyTabCtrl",['$scope', 'DTOptionsBuilder', 'DTColum
                 }
             }
         });
-        
+
         $scope.depenDtColumnDefs = [
             DTColumnDefBuilder.newColumnDef(0),
             DTColumnDefBuilder.newColumnDef(1),
