@@ -66,8 +66,11 @@ saturnApp.controller('EditRiskCtrl', function($scope, $modalInstance, risk, comm
 	$scope.commitmentName = commitmentName;
 	$scope.generalOptions = RISK_GENERAL_OPTIONS;
 	$scope.resolutionOptions = RISK_RESOLUTION_OPTIONS;
+	$scope.submitted = false;
 
 	$scope.updateRisk = function() {
+		$scope.submitted = true;
+
 		Risk.update({id: $scope.risk.id}, $scope.risk, function(risk) {
 			console.log("Updated");
 			$modalInstance.close(risk);

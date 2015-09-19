@@ -5,7 +5,7 @@
     </div>
     <div class="modal-body">
         <div class="container-fluid">
-            <form class="form-horizontal">
+            <form name="editRiskForm" class="form-horizontal">
                 <div class="form-group">
                     <label class="control-label col-sm-3">Commitment:</label>
                     <div class="col-sm-9">
@@ -13,46 +13,63 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="commitment-name" class="control-label col-sm-3">Risk:</label>
+                    <label for="commitment-name" class="control-label col-sm-3">
+                        Risk Name: 
+                        <span ng-if="submitted && editRiskForm.name.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
-                        <input type="text" ng-model="risk.name" class="form-control" id="commitment-name" value="{[{ risk.name }]}">
+                        <input type="text" ng-model="risk.name" class="form-control" name="name"
+                        value="{[{ risk.name }]}" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Probability:</label>
+                    <label class="control-label col-sm-3">
+                        Probability: 
+                        <span ng-if="submitted && editRiskForm.probability.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
-                        <select class="form-control col-sm-9" ng-model="risk.probability"
-                            ng-options="opt for opt in generalOptions">
+                        <select class="form-control col-sm-9" ng-model="risk.probability" name="probability"
+                            ng-options="opt for opt in generalOptions" required>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Impact:</label>
+                    <label class="control-label col-sm-3">
+                        Impact: 
+                        <span ng-if="submitted && editRiskForm.impact.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
-                        <select class="form-control col-sm-9" ng-model="risk.impact" ng-options="opt for opt in generalOptions">
+                        <select class="form-control col-sm-9" ng-model="risk.impact" name="impact"
+                        ng-options="opt for opt in generalOptions" required>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="start" class="control-label col-sm-3">Severity:</label>
+                    <label for="start" class="control-label col-sm-3">
+                        Severity: 
+                        <span ng-if="submitted && editRiskForm.severity.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
-                        <select class="form-control col-sm-9" id="start" ng-model="risk.severity"
-                            ng-options="opt for opt in generalOptions">
+                        <select class="form-control col-sm-9" name="severity" ng-model="risk.severity"
+                            ng-options="opt for opt in generalOptions" required>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="stop" class="control-label col-sm-3">Resolution:</label>
+                    <label for="stop" class="control-label col-sm-3">
+                        Resolution: 
+                        <span ng-if="submitted && editRiskForm.resolution.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
-                        <select class="form-control col-sm-9" id="start" ng-model="risk.resolution"
-                            ng-options="opt for opt in resolutionOptions">
+                        <select class="form-control col-sm-9" name="resolution" ng-model="risk.resolution"
+                            ng-options="opt for opt in resolutionOptions" required>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="comments" class="control-label col-sm-3">Comments:</label>
                     <div class="col-sm-9">
-                        <textarea ng-model="risk.notes" class="form-control" id="comments" rows="3">{[{ risk.notes }]}</textarea>
+                        <textarea ng-model="risk.notes" class="form-control" rows="3">{[{ risk.notes }]}</textarea>
                     </div>
                 </div>
             </form>
