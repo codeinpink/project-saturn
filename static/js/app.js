@@ -1,4 +1,4 @@
-var saturnApp = angular.module('missionControlApp',['ui.bootstrap', 'ngResource', 'angucomplete-alt', 'datatables','datatables.tabletools', 'datatables.bootstrap']);
+var saturnApp = angular.module('missionControlApp',['ui.bootstrap', 'ngResource', 'datatables','datatables.tabletools', 'datatables.bootstrap']);
 
 saturnApp.config(function($interpolateProvider) {
   $interpolateProvider.startSymbol('{[{');
@@ -7,10 +7,8 @@ saturnApp.config(function($interpolateProvider) {
 
 saturnApp.config(function($resourceProvider) {
   $resourceProvider.defaults.stripTrailingSlashes = false;
-
-        
-
 });
+
 saturnApp.config(['$resourceProvider', '$httpProvider',
     function($resourceProvider, $httpProvider) {
         $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';

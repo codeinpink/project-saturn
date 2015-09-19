@@ -8,7 +8,7 @@ Home
 {% endblock title %}
 
 {% block content %}
-<section class="jumbotron" ng-controller="homeCtrl as home">
+<section class="jumbotron" ng-controller="searchCtrl as search">
 	<h1 class="text-center">PSI Planning Tool</h1>
 
 	<div class="center-block home-buttons">
@@ -16,9 +16,10 @@ Home
 		<a href="{% url 'all_teams' %}" class="btn btn-default btn-lg">See All Commitments</a>
 		<br>
 		<div id="team-name-autocomplete" class="form-inline center-block" ng-hide="hideInput">
-			<span angucomplete-alt id="team-name" type="text" placeholder="Team Name" input-class="form-control input-lg"
-				title-field="name" selected-object="team" local-data="teams" search-fields="name" minlength="1"></span>
-			<button type="button" class="btn btn-primary btn-lg" ng-click="goToTeam(team.title)">Go</button>
+			<input type="text" class="form-control input-lg" placeholder="Search Teams" ng-model="team"
+            typeahead="team as team.name for team in teams | filter:{name:$viewValue} | limitTo:5"
+            typeahead-on-select="goToTeam(team.slug)">
+			<button type="button" class="btn btn-primary btn-lg" ng-click="goToTeam(team.slug)">Go</button>
 		</div>
 
 	</div>

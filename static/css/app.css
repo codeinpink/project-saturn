@@ -43,20 +43,6 @@
     padding: 10px 40px;
 }
 
-.angucomplete-holder {
-    display: inline;
-}
-
-.angucomplete-title {
-    padding: 10px;
-}
-
-#team-name_dropdown {
-    margin: 0 auto;
-    width: 245px;
-    background: #FFF;
-}
-
 .glyphicon.glyphicon-alert {
     font-size: 75px;
     color: #d9534f;
