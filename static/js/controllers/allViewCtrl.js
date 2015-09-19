@@ -17,14 +17,28 @@ saturnApp.controller("commitTabCtrl",['$scope', 'DTOptionsBuilder', 'DTColumnDef
         $scope.reloadCommits = function(){refreshCommits();};
         $scope.commitments =null;
 
-        $scope.dtOptions = DTOptionsBuilder.newOptions().withTableTools('/static/lib/copy_csv_xls_pdf.swf')
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+        .withPaginationType('full_numbers')
+        .withTableTools('/static/lib/copy_csv_xls_pdf.swf')
         .withTableToolsButtons([
             'print', {
                 'sExtends': 'collection',
                 'sButtonText': 'Save',
                 'aButtons': ['csv', 'xls', 'pdf']
             }
-        ]).withPaginationType('full_numbers');
+        ])
+        .withBootstrap()
+        .withBootstrapOptions({
+            TableTools: {
+                classes: {
+                    container: 'btn-group pull-right table-tools-group',
+                    buttons: {
+                        normal: 'btn btn-default'
+                    }
+                }
+            }
+        });
+
         $scope.dtColumnDefs = [
             DTColumnDefBuilder.newColumnDef(0),
             DTColumnDefBuilder.newColumnDef(1),
@@ -51,14 +65,28 @@ saturnApp.controller("riskTabCtrl",['$scope','$http', 'DTOptionsBuilder', 'DTCol
         $scope.reloadRisk = function(){refreshRisks();};
         $scope.risks = null;
 
-        $scope.riskDtOptions = DTOptionsBuilder.newOptions().withTableTools('/static/lib/copy_csv_xls_pdf.swf')
+        $scope.riskDtOptions = DTOptionsBuilder.newOptions()
+        .withPaginationType('full_numbers')
+        .withTableTools('/static/lib/copy_csv_xls_pdf.swf')
         .withTableToolsButtons([
             'print', {
                 'sExtends': 'collection',
                 'sButtonText': 'Save',
                 'aButtons': ['csv', 'xls', 'pdf']
             }
-        ]).withPaginationType('full_numbers');
+        ])
+        .withBootstrap()
+        .withBootstrapOptions({
+            TableTools: {
+                classes: {
+                    container: 'btn-group pull-right table-tools-group',
+                    buttons: {
+                        normal: 'btn btn-default'
+                    }
+                }
+            }
+        });
+
         $scope.riskDtColumnDefs = [
             DTColumnDefBuilder.newColumnDef(0),
             DTColumnDefBuilder.newColumnDef(1),
@@ -88,14 +116,28 @@ saturnApp.controller("dependencyTabCtrl",['$scope', 'DTOptionsBuilder', 'DTColum
         $scope.dependencies =null;
         $scope.reloadDependencies = function(){refreshDependencies();};
 
-        $scope.depenDtOptions = DTOptionsBuilder.newOptions().withTableTools('/static/lib/copy_csv_xls_pdf.swf')
+        $scope.depenDtOptions = DTOptionsBuilder.newOptions()
+        .withPaginationType('full_numbers')
+        .withTableTools('/static/lib/copy_csv_xls_pdf.swf')
         .withTableToolsButtons([
             'print', {
                 'sExtends': 'collection',
                 'sButtonText': 'Save',
                 'aButtons': ['csv', 'xls', 'pdf']
             }
-        ]).withPaginationType('full_numbers');
+        ])
+        .withBootstrap()
+        .withBootstrapOptions({
+            TableTools: {
+                classes: {
+                    container: 'btn-group pull-right table-tools-group',
+                    buttons: {
+                        normal: 'btn btn-default'
+                    }
+                }
+            }
+        });
+        
         $scope.depenDtColumnDefs = [
             DTColumnDefBuilder.newColumnDef(0),
             DTColumnDefBuilder.newColumnDef(1),
