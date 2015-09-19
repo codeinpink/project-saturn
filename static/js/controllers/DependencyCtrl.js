@@ -2,8 +2,10 @@ saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, 
 	$scope.commitment = commitment;
     $scope.teams = Team.query();
     $scope.dependency = {};
+    $scope.submitted = false;
 
     $scope.saveDependency = function(dependency) {
+    	$scope.submitted = true;
         dependency.commitment_id = $scope.commitment.id;
         dependency.dependent_on_id = (dependency.dependent_on ? dependency.dependent_on.id : null);
 
@@ -11,6 +13,7 @@ saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, 
 			console.log("Saved");
 			$scope.commitment.dependency_set.push(dependency);
 			$scope.dependency = {};
+			$scope.submitted = false;
 		});
     };
 

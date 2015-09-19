@@ -7,28 +7,25 @@
         <div class="container-fluid">
             <table class="table row-border table-striped">
                 <thead>
-                    <tr>
+                    <tr ng-form="newDependencyForm">
                         <th>
-                            <div class="form-group">
-                                <label>
-                                    <input class="form-control" type="text" name="name" placeholder="Dependency Name" ng-model="dependency.name">
-                                </label>
+                            <div class="form-group" ng-class="{'has-error': submitted && newDependencyForm.name.$error.required}">
+                                <small class="help-block" ng-if="submitted && newDependencyForm.name.$error.required">This field is required</small>
+                                <input class="form-control" type="text" name="name" placeholder="Dependency Name"
+                                ng-model="dependency.name" required>
                             </div>
                         </th>
                         <th>
-                            <div class="form-group">
-                                <label>
-                                    <select class="form-control" name="team" ng-model="dependency.dependent_on"
-                                        ng-options="opt.name for opt in teams">
-                                    </select>
-                                </label>
+                            <div class="form-group" ng-class="{'has-error': submitted && newDependencyForm.team.$error.required}">
+                                <small class="help-block" ng-if="submitted && newDependencyForm.team.$error.required">This field is required</small>
+                                <select class="form-control" name="team" ng-model="dependency.dependent_on"
+                                    ng-options="opt.name for opt in teams" required>
+                                </select>
                             </div>
                         </th>
                         <th colspan="3">
                             <div class="form-group">
-                                <label>
-                                    <input class="form-control" type="text" name="comments" placeholder="Comments" ng-model="dependency.notes">
-                                </label>
+                                <input class="form-control" type="text" name="comments" placeholder="Comments" ng-model="dependency.notes">
                             </div>
                         </th>
                         <th>
