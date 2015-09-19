@@ -1,7 +1,7 @@
 var ALL_FEATURE_COLUMN_LABELS = ['Feature','Theme','Commitment',
                                  'Team','Commit Status','Def. of Done',
                                  'Start Iteration','Finish Iteration','Comments'];
-var ALL_RISK_COLUMN_LABELS = ['Risk','Feature','Commitment','Probability','Impact',
+var ALL_RISK_COLUMN_LABELS = ['Feature','Commitment','Risk','Probability','Impact',
                                 'Severity','Resolution','Comments'];
 var ALL_DEPENDENCY_COLUMN_LABELS = ['Dependency','Commitment','Feature','Dependent On','Comments'];
 
