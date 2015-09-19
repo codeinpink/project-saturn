@@ -64,8 +64,11 @@ saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, 
 saturnApp.controller('EditDependencyCtrl', function($scope, $modalInstance, Dependency, Team, dependency, teams) {
 	$scope.dependency = angular.copy(dependency);
     $scope.teams = teams;
+    $scope.submitted = false;
 
 	$scope.updateDependency = function() {
+		$scope.submitted = true;
+		
 		Dependency.update({id: $scope.dependency.id}, $scope.dependency, function(dependency) {
 			console.log("Updated");
 			$modalInstance.close(dependency);

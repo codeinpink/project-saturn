@@ -71,7 +71,7 @@ td.ng-binding{
     margin: 10px 10px 25px 15px;
 }
 
-form span {
+form span, .required {
     color: red;
     font-size: 18px;
     font-weight: bold;

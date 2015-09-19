@@ -5,7 +5,7 @@
     </div>
     <div class="modal-body">
         <div class="container-fluid">
-            <form class="form-horizontal">
+            <form name="editDependencyForm" class="form-horizontal">
                 <div class="form-group">
                     <label class="control-label col-sm-3">Commitment:</label>
                     <div class="col-sm-9">
@@ -13,16 +13,23 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="commitment-name" class="control-label col-sm-3">Dependency:</label>
+                    <label for="commitment-name" class="control-label col-sm-3">
+                        Dependency Name: 
+                        <span ng-if="submitted && editDependencyForm.name.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
-                        <input type="text" ng-model="dependency.name" class="form-control" value="{[{ dependency.name }]}">
+                        <input type="text" ng-model="dependency.name" name="name" class="form-control"
+                        value="{[{ dependency.name }]}" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Dependent On:</label>
+                    <label class="control-label col-sm-3">
+                        Dependent On: 
+                        <span ng-if="submitted && editDependencyForm.dependent_on.$error.required">*</span>
+                    </label>
                     <div class="col-sm-9">
                         <select class="form-control col-sm-9" ng-model="dependency.dependent_on"
-                            ng-options="opt.name for opt in teams track by opt.id">
+                            name="dependent_on" ng-options="opt.name for opt in teams track by opt.id" required>
                         </select>
                     </div>
                 </div>
