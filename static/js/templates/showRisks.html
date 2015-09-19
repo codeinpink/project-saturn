@@ -7,48 +7,43 @@
         <div class="container-fluid">
             <table class="table row-border table-striped">
                 <thead>
-                    <tr ng-form name="newRisk">
+                    <tr ng-form name="newRiskForm">
                         <th>
-                            <div class="form-group" ng-class="{'has-error': newRisk.name.$dirty && newRisk.name.$invalid, 'has-success': newRisk.name.$dirty && !newRisk.name.$invalid}">
-                                <label>
-                                    <input class="form-control" type="text" name="name" placeholder="Risk Name" ng-model="risk.name" required>
-                                </label>
+                            <div class="form-group" ng-class="{'has-error': submitted && newRiskForm.name.$error.required}">
+                                <small class="help-block" ng-if="submitted && newRiskForm.name.$error.required">This field is required</small>
+                                <input class="form-control" type="text" name="name" placeholder="Risk Name" ng-model="risk.name" required>
                             </div>
                         </th>
                         <th>
-                            <div class="form-group">
-                                <label>
-                                    <select class="form-control" name="probability" ng-model="risk.probability"
-                                        ng-options="opt for opt in generalOptions" required>
-                                    </select>
-                                </label>
+                            <div class="form-group" ng-class="{'has-error': submitted && newRiskForm.probability.$error.required}">
+                                <small class="help-block" ng-if="submitted && newRiskForm.probability.$error.required">This field is required</small>
+                                <select class="form-control" name="probability" ng-model="risk.probability"
+                                    ng-options="opt for opt in generalOptions" required>
+                                </select>
                             </div>
                         </th>
                         <th>
-                            <div class="form-group">
-                                <label>
-                                    <select class="form-control" name="impact" ng-model="risk.impact"
-                                        ng-options="opt for opt in generalOptions" required>
-                                    </select>
-                                </label>
+                            <div class="form-group" ng-class="{'has-error': submitted && newRiskForm.impact.$error.required}">
+                                <small class="help-block" ng-if="submitted && newRiskForm.impact.$error.required">This field is required</small>
+                                <select class="form-control" name="impact" ng-model="risk.impact"
+                                    ng-options="opt for opt in generalOptions" required>
+                                </select>
                             </div>
                         </th>
                         <th>
-                            <div class="form-group">
-                                <label>
-                                    <select class="form-control" name="severity" ng-model="risk.severity"
-                                        ng-options="opt for opt in generalOptions" required>
-                                    </select>
-                                </label>
+                            <div class="form-group" ng-class="{'has-error': submitted && newRiskForm.severity.$error.required}">
+                                <small class="help-block" ng-if="submitted && newRiskForm.severity.$error.required">This field is required</small>
+                                <select class="form-control" name="severity" ng-model="risk.severity"
+                                    ng-options="opt for opt in generalOptions" required>
+                                </select>
                             </div>
                         </th>
                         <th>
-                            <div class="form-group">
-                                <label>
-                                    <select class="form-control" name="resolution" ng-model="risk.resolution"
-                                        ng-options="opt for opt in resolutionOptions" required>
-                                    </select>
-                                </label>
+                            <div class="form-group" ng-class="{'has-error': submitted && newRiskForm.resolution.$error.required}">
+                                <small class="help-block" ng-if="submitted && newRiskForm.resolution.$error.required">This field is required</small>
+                                <select class="form-control" name="resolution" ng-model="risk.resolution"
+                                    ng-options="opt for opt in resolutionOptions" required>
+                                </select>
                             </div>
                         </th>
                         <th colspan="2">

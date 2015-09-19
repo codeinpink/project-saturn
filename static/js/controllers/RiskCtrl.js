@@ -3,14 +3,17 @@ saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, Risk, 
 	$scope.generalOptions = RISK_GENERAL_OPTIONS;
 	$scope.resolutionOptions = RISK_RESOLUTION_OPTIONS;
 	$scope.risk = {};
+	$scope.submitted = false;
 
     $scope.saveRisk = function(risk) {
+    	$scope.submitted = true;
         risk.commitment_id = $scope.commitment.id;
 
         Risk.save(risk, function(risk) {
 			console.log("Saved");
 			$scope.commitment.risk_set.push(risk);
 			$scope.risk = {};
+			$scope.submitted = false;
 		});
     };
 
