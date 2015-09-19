@@ -21,7 +21,18 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', '$
                 'sButtonText': 'Save',
                 'aButtons': ['csv', 'xls', 'pdf']
             }
-        ]);
+        ])
+        .withBootstrap()
+        .withBootstrapOptions({
+            TableTools: {
+                classes: {
+                    container: 'btn-group pull-right table-tools-group',
+                    buttons: {
+                        normal: 'btn btn-default'
+                    }
+                }
+            }
+		});
 
     	$scope.dtColumnDefs = [
 			DTColumnDefBuilder.newColumnDef(0),

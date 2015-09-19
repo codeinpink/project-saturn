@@ -1,4 +1,4 @@
-var saturnApp = angular.module('missionControlApp',['ui.bootstrap', 'ngResource', 'angucomplete-alt', 'datatables','datatables.tabletools']);
+var saturnApp = angular.module('missionControlApp',['ui.bootstrap', 'ngResource', 'angucomplete-alt', 'datatables','datatables.tabletools', 'datatables.bootstrap']);
 
 saturnApp.config(function($interpolateProvider) {
   $interpolateProvider.startSymbol('{[{');

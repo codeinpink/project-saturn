@@ -76,3 +76,7 @@ form span, .required {
     font-size: 18px;
     font-weight: bold;
 }
+
+.table-tools-group {
+    margin-left: 30px;
+}
