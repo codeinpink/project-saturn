@@ -65,10 +65,11 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', '$
 		.withPaginationType('full_numbers')
 		.withTableTools('/static/lib/copy_csv_xls_pdf.swf')
 		.withTableToolsButtons([
-            'print', {
-                'sExtends': 'collection',
+            'print',
+            {
+            	'sExtends': 'csv',
                 'sButtonText': 'Save',
-                'aButtons': ['csv', 'xls', 'pdf']
+                'oSelectorOpts': {filter: 'applied'}
             }
         ])
         .withBootstrap()
