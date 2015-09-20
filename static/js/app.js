@@ -15,7 +15,7 @@ saturnApp.config(['$resourceProvider', '$httpProvider',
         $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     }
 ]);
-
+saturnApp.constant('REFRESH_RATE','5000');//data refresh rate 5000 = 5sec
 var PSI_CYCLES = [
     '19-1',
     '19-2',
