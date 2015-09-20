@@ -5,9 +5,59 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', '$
 		$scope.teamId = $('#teamId').html();
 		$scope.columns = TEAM_COLUMN_LABELS;
 
-		$scope.teamObj = Team.get({id: $scope.teamId}), function() {
-			console.log($scope.teamObj);
-		};
+		$scope.teamObj = Team.get({id: $scope.teamId}, function() {
+			$scope.getTotalRisks = function() {
+				var total = 0;
+
+				for (var i = 0; i < $scope.teamObj.commitment_set.length; i++) {
+					commitment = $scope.teamObj.commitment_set[i];
+					total += commitment.risk_set.length;
+				}
+
+				return total;
+			};
+
+			$scope.getTotalDependencies = function() {
+				var total = 0;
+
+				for (var i = 0; i < $scope.teamObj.commitment_set.length; i++) {
+					commitment = $scope.teamObj.commitment_set[i];
+					total += commitment.dependency_set.length;
+				}
+
+				return total;
+			};
+
+			$scope.isPSICapacitySet = function() {
+				psiCapacitySet = $scope.teamObj.confidence;
+				return psiCapacitySet;
+			};
+
+			$scope.hasAddedCommitment = function() {
+				return $scope.teamObj.commitment_set.length;
+			};
+
+			$scope.hasGoodStatus = function() {
+				return $scope.isPSICapacitySet() && $scope.hasAddedCommitment();
+			};
+
+			$scope.getStatusTooltip = function() {
+				if ($scope.hasGoodStatus()) {
+					return 'This Team Has Set Its Confidence and Has Added a Commitment';
+				} else {
+					var confidence = $scope.isPSICapacitySet();
+					var commitment = $scope.hasAddedCommitment();
+
+					if (!confidence && !commitment) {
+						return 'This Team Has NOT Set Its Confidence and Has NOT Added a Commitment';
+					} else if (!confidence) {
+						return 'This Team Has NOT Set Its Confidence';
+					} else if (!commitment) {
+						return 'This Team Has NOT Added a Commitment';
+					}
+				}
+			};
+		});
 
 		$scope.allFeatures = Feature.query();
 
@@ -48,10 +98,7 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', '$
 			DTColumnDefBuilder.newColumnDef(11).notSortable(),
 		];
 
-		$scope.isPSICapacitySet = function() {
-			psiCapacitySet = $scope.teamObj.confidence;
-			return psiCapacitySet;
-		};
+		
 
 		$scope.addTeamInfo = function() {
 			var modalInstance = $modal.open({

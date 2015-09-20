@@ -13,18 +13,33 @@
 <div style="margin-top: 60px;">
 	<div class="container white-bg" ng-controller="teamViewCtrl as teamCtrl">
 		<div class="row">
-			<div>
-				<h1 style="display: inline-block;">{{ team.name }} </h1>
-				<button type="button" id="psi-capacity" ng-click="addTeamInfo()" class="btn btn-success"
-				ng-class="{'btn-primary': isPSICapacitySet(), 'btn-danger': !isPSICapacitySet()}"
+			<div class="header">
+				<h1>{{ team.name }} </h1>
+				<button type="button" id="psi-capacity" ng-click="addTeamInfo()" class="btn btn-default"
 				tooltip="Add Team's PSI Capacity">
 					<i class="glyphicon glyphicon-edit"></i>
 				</button>
+				<span class="pull-right">
+					<h3>Status:</h3> 
+					<i id="team-status" class="glyphicon" ng-class="{'text-success glyphicon-ok': hasGoodStatus(), 'bad glyphicon-remove': !hasGoodStatus()}" tooltip="{[{ getStatusTooltip() }]}"></i>
+				</span>
 			</div>
-			<div id = "teamId" style="display: none;" >{{team.id}}</div>
-			<button type="button" style="margin: 30px 0;" ng-click="addCommitment()" class="btn btn-success">Add New Commitment</button>
+			<div id="teamId" style="display: none;">{{team.id}}</div>
+			
+		</div>
+		<div class="row" id="summary">
+			<div class="col-sm-4">
+				<h3>Commitments:</h3><span>{[{ teamObj.commitment_set.length }]}</span>
+			</div>
+			<div class="col-sm-4">
+				<h3>Risks:</h3><span>{[{ getTotalRisks() }]}</span>
+			</div>
+			<div class="col-sm-4">
+				<h3>Dependencies:</h3><span>{[{ getTotalDependencies() }]}</span>
+			</div>
 		</div>
 		<div class="row">
+		<button type="button" style="margin: 30px 0;" ng-click="addCommitment()" class="btn btn-success">Add New Commitment</button>
 			<table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table row-border table-hover table-striped">
 				<thead>
 					<tr>
