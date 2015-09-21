@@ -1,7 +1,4 @@
 {% extends "base.html" %}
-{% block bg %}
-grey-bg
-{% endblock %}
 
 {% block nav %}
 {% include 'nav.html' %}
@@ -32,10 +29,10 @@ All Teams
 					</div>
 				</div>
 		    </tab>
-			<tab heading="Dependancies" >
+			<tab heading="Dependencies" >
 				<div style="margin-top: 30px;" ng-controller = "dependencyTabCtrl as dependency">
 					<div class="row">
-						<table id = "allDependencies" datatable="" dt-instance="dtInstance" dt-options="dtOptions" dt-columns="dtColumns"""""" class="table row-border table-hover table-striped">
+						<table id = "allDependencies" datatable="" dt-instance="dtInstance" dt-options="dtOptions" dt-columns="dtColumns" class="table row-border table-hover table-striped">
 						</table>
 					</div>
 				</div>

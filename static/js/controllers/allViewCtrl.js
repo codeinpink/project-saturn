@@ -16,11 +16,11 @@ saturnApp.controller("commitTabCtrl",['$scope', 'DTOptionsBuilder', 'DTColumnBui
         .withPaginationType('full_numbers')
         .withTableTools('/static/lib/copy_csv_xls_pdf.swf')
         .withTableToolsButtons([
-            'print', {
-                'sExtends': 'collection',
-                "oSelectorOpts": { filter: 'applied', order: 'current' },
+            'print',
+            {
+                'sExtends': 'csv',
                 'sButtonText': 'Save',
-                'aButtons': ['csv', 'xls', 'pdf']
+                'oSelectorOpts': {filter: 'applied'}
             }
         ])
         .withBootstrap()
@@ -44,7 +44,7 @@ saturnApp.controller("commitTabCtrl",['$scope', 'DTOptionsBuilder', 'DTColumnBui
             DTColumnBuilder.newColumn('done_definition').withTitle('Def. of Done'),
             DTColumnBuilder.newColumn('start').withTitle('Start Iteration'),
             DTColumnBuilder.newColumn('stop').withTitle('Finish Iteration'),
-            DTColumnBuilder.newColumn('notes').withTitle('Comment'),
+            DTColumnBuilder.newColumn('notes').withTitle('Comments'),
             DTColumnBuilder.newColumn('feature.clarity_or_jira_id').withTitle('Database id').notVisible(),
             ];
 
@@ -69,10 +69,11 @@ saturnApp.controller("riskTabCtrl",['$scope','$http', 'DTOptionsBuilder', 'DTCol
         .withPaginationType('full_numbers')
         .withTableTools('/static/lib/copy_csv_xls_pdf.swf')
         .withTableToolsButtons([
-            'print', {
-                'sExtends': 'collection',
+            'print',
+            {
+                'sExtends': 'csv',
                 'sButtonText': 'Save',
-                'aButtons': ['csv', 'xls', 'pdf']
+                'oSelectorOpts': {filter: 'applied'}
             }
         ])
         .withBootstrap()
@@ -124,11 +125,12 @@ saturnApp.controller("dependencyTabCtrl",['$scope', 'DTOptionsBuilder', 'DTColum
        .withPaginationType('full_numbers')
        .withTableTools('/static/lib/copy_csv_xls_pdf.swf')
        .withTableToolsButtons([
-           'print', {
-               'sExtends': 'collection',
-               'sButtonText': 'Save',
-               'aButtons': ['csv', 'xls', 'pdf']
-           }
+           'print',
+           {
+                'sExtends': 'csv',
+                'sButtonText': 'Save',
+                'oSelectorOpts': {filter: 'applied'}
+            }
        ])
        .withBootstrap()
        .withBootstrapOptions({

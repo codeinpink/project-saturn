@@ -30,7 +30,8 @@
                         <span ng-if="submitted && team.confidence === 0">*</span>
                     </label>
                     <div class="col-sm-9">
-                        <input type="number" step="any" min="0" ng-model="team.confidence" class="form-control" value="{[{ team.confidence }]}">
+                        <input type="number" step="any" min="0" ng-model="team.confidence" class="form-control" value="{[{ team.confidence }]}"
+                        tooltip="This must be between 1 and 5" tooltip-trigger="focus">
                     </div>
                 </div>
             </form>
