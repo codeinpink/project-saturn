@@ -16,6 +16,7 @@ saturnApp.config(['$resourceProvider', '$httpProvider',
     }
 ]);
 saturnApp.constant('REFRESH_RATE','5000');//data refresh rate 5000 = 5sec
+
 var PSI_CYCLES = [
     '19-1',
     '19-2',
@@ -52,3 +53,22 @@ var RISK_RESOLUTION_OPTIONS = [
     'TRANSFER',
     'WATCH/MONITOR'
 ];
+
+saturnApp.constant('THEMES',[
+    'AOS-5525',
+    'Business CPE',
+    'EoCu',
+    'FTTN-TA',
+    'FTTP',
+    'FTTP/FTTDP',
+    'FTTP-AOE',
+    'FTTP-Legacy',
+    'FTTP-ONT',
+    'HW',
+    'MSAN',
+    'NM Convergence',
+    'Packet Optical',
+    'SDN/NFV',
+    'Solutions & Applications',
+    'Voice'
+]);//data refresh rate 5000 = 5sec

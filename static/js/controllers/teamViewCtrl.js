@@ -1,6 +1,6 @@
 var TEAM_COLUMN_LABELS = ['Commitment','Feature', 'Commit Status','Def. of Done','Start Iteration','Finish Iteration','Comments'];
 var psiCapacitySet = false;
-saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', '$window', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'Team', 'Feature', 'Commitment',
+saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', '$window', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'Team', 'Feature', 'Commitment','THEMES',
 	function($scope, $http, $resource, $modal, $window, DTOptionsBuilder, DTColumnDefBuilder, Team, Feature, Commitment) {
 		$scope.teamId = $('#teamId').html();
 		$scope.columns = TEAM_COLUMN_LABELS;
@@ -98,7 +98,7 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', '$
 			DTColumnDefBuilder.newColumnDef(11).notSortable(),
 		];
 
-		
+
 
 		$scope.addTeamInfo = function() {
 			var modalInstance = $modal.open({
@@ -208,12 +208,15 @@ saturnApp.controller("teamViewCtrl",['$scope','$http', '$resource', '$modal', '$
 
 }]);
 
-saturnApp.controller('NewCommitmentCtrl', function($scope, $modalInstance, Commitment, allFeatures, teamFeatures, teamId) {
+saturnApp.controller('NewCommitmentCtrl',function($scope, $modalInstance, Feature, Commitment, allFeatures, teamFeatures, teamId,THEMES) {
+	$scope.addingNewFeature = false;
+    $scope.showTeamFeaturesOnly = true;
 	$scope.allFeatures = allFeatures;
 	$scope.teamFeatures = teamFeatures;
 	$scope.features = teamFeatures;
 	$scope.teamId = teamId;
 
+	$scope.THEMES = THEMES;
 	$scope.iterationOptions = PSI_CYCLES;
 	$scope.commitmentStatusOptions = COMMITMENT_STATUS_OPTIONS;
 	$scope.defOfDoneOptions = DEFINITION_OF_DONE_OPTIONS;
@@ -221,7 +224,16 @@ saturnApp.controller('NewCommitmentCtrl', function($scope, $modalInstance, Commi
 	$scope.submitted = false;
 
 	$scope.toggleFeatureSource = function() {
-		$scope.features = ($scope.features === $scope.teamFeatures ? $scope.allFeatures : $scope.teamFeatures);
+        $scope.showTeamFeaturesOnly = ($scope.showTeamFeaturesOnly ? false : true);
+		$scope.features = ($scope.showTeamFeaturesOnly == false ? $scope.allFeatures : $scope.teamFeatures);
+		$scope.addingNewFeature = false;
+	};
+
+	$scope.toggleAddingFeature = function() {
+        $scope.showTeamFeaturesOnly = false;
+        if($scope.commitment){$scope.commitment.feature =null;}
+        $scope.newCommitmentForm.$setPristine();
+		$scope.addingNewFeature = ($scope.addingNewFeature ? false : true);
 	};
 
 	$scope.doneDefinitionIsValid = function() {
@@ -240,18 +252,37 @@ saturnApp.controller('NewCommitmentCtrl', function($scope, $modalInstance, Commi
 
 	$scope.saveCommitment = function(commitment) {
 		$scope.submitted = true;
+        if($scope.addingNewFeature){
+            var newFeature = {
+                'name':commitment.feature.name,
+                'theme':commitment.feature.theme
+            };
+            Feature.save(newFeature, function(savedFeature) {
+                saveCommit(savedFeature.id);
+                $scope.allFeatures.push(savedFeature);
+            });
+        }
+        else {
+            try {saveCommit(commitment.feature.id);}
+            catch(err){
+                console.log(err);
+            }
+        }
 
-		if (commitment && commitment.feature) {
-			commitment.feature_id = commitment.feature.id;
-			commitment.team_id = $scope.teamId;
-		}
+        function saveCommit(featureId) {
+            if (commitment && commitment.feature) {
+                commitment.feature_id = featureId;
+                commitment.team_id = $scope.teamId;
+            }
 
-		if ($scope.doneDefinitionIsValid()) {
-			Commitment.save(commitment, function(commitment) {
-				console.log('Saved');
-				$modalInstance.close(commitment);
-			});
-		}
+             if ($scope.doneDefinitionIsValid()) {
+                Commitment.save(commitment, function(commitment) {
+                    console.log('Saved');
+                    if($scope.addingNewFeature){$scope.teamFeatures.push(commitment.feature);}
+                    $modalInstance.close(commitment);
+                });
+             }
+        }
 	};
 
 	$scope.cancel = function () {

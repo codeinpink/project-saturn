@@ -12,17 +12,36 @@
                         <span ng-if="submitted && newCommitmentForm.feature.$error.required">*</span>
                     </label>
                     <div class="col-sm-9">
-                        <select class="form-control" name="feature" ng-model="commitment.feature"
+                        <input ng-show="addingNewFeature" type="text" ng-model="commitment.feature.name" class="form-control"
+                        name="feature" value="{[{ commitment.feature.name }]}" required>
+                        <select ng-hide="addingNewFeature" class="form-control" name="feature" ng-model="commitment.feature"
                             ng-options="opt.name for opt in features" required>
                         </select>
                     </div>
                     <div class="col-sm-push-3 col-sm-9">
                         <div class="checkbox">
                           <label>
-                            <input type="checkbox" value="" checked ng-click="toggleFeatureSource()">
+                            <input type="checkbox" value="" ng-checked="showTeamFeaturesOnly" ng-click="toggleFeatureSource()">
                             Show Only My Team's Features
-                          </label>
+                            </label>
                         </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" value="" ng-checked="addingNewFeature" ng-click="toggleAddingFeature()">
+                            {[{addingNewFeature ? "Adding New Feature" : "Feature Not Shown?"}]}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" ng-show="addingNewFeature">
+                    <label class="control-label col-sm-3">
+                        Theme:
+                        <span ng-if="submitted && newCommitmentForm.theme.$error.required">*</span>
+                    </label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="theme" ng-model="commitment.feature.theme"
+                                ng-options="theme for theme in THEMES" required>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
