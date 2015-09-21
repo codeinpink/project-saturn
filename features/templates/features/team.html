@@ -20,21 +20,24 @@
 					<i class="glyphicon glyphicon-edit"></i>
 				</button>
 				<span class="pull-right">
-					<h3>Status:</h3> 
+					<h3>Status:</h3>
 					<i id="team-status" class="glyphicon" ng-class="{'text-success glyphicon-ok': hasGoodStatus(), 'bad glyphicon-remove': !hasGoodStatus()}" tooltip="{[{ getStatusTooltip() }]}"></i>
 				</span>
 			</div>
 			<div id="teamId" style="display: none;">{{team.id}}</div>
-			
+
 		</div>
 		<div class="row" id="summary">
-			<div class="col-sm-4">
+			<div class="col-sm-3">
+				<h3>Confidence:</h3><span>{[{ teamObj.confidence }]}</span>
+			</div>
+			<div class="col-sm-3">
 				<h3>Commitments:</h3><span>{[{ teamObj.commitment_set.length }]}</span>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				<h3>Risks:</h3><span>{[{ getTotalRisks() }]}</span>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				<h3>Dependencies:</h3><span>{[{ getTotalDependencies() }]}</span>
 			</div>
 		</div>
