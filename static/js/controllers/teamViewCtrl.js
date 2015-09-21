@@ -72,7 +72,7 @@ saturnApp.controller('teamViewCtrl', function($scope, $http, $resource, $modal, 
         'print',
         {
         	'sExtends': 'csv',
-            'sButtonText': 'Save',
+            'sButtonText': 'Export',
             'oSelectorOpts': {filter: 'applied'}
         }
     ])

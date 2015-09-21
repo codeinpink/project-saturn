@@ -19,7 +19,7 @@ saturnApp.controller('commitTabCtrl', function($scope, $rootScope, DTOptionsBuil
         'print',
         {
             'sExtends': 'csv',
-            'sButtonText': 'Save',
+            'sButtonText': 'Export',
             'oSelectorOpts': {filter: 'applied'}
         }
     ])
@@ -75,7 +75,7 @@ saturnApp.controller('riskTabCtrl', function($scope, $http, $rootScope, DTOption
         'print',
         {
             'sExtends': 'csv',
-            'sButtonText': 'Save',
+            'sButtonText': 'Export',
             'oSelectorOpts': {filter: 'applied'}
         }
     ])
@@ -130,7 +130,7 @@ saturnApp.controller('dependencyTabCtrl', function($scope, $rootScope, DTOptions
        'print',
        {
             'sExtends': 'csv',
-            'sButtonText': 'Save',
+            'sButtonText': 'Export',
             'oSelectorOpts': {filter: 'applied'}
         }
    ])
