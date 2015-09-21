@@ -1,8 +1,11 @@
 saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, commitment, Dependency, Team) {
 	$scope.commitment = commitment;
-    $scope.teams = Team.query();
     $scope.dependency = {};
     $scope.submitted = false;
+
+    $scope.teams = Team.query(function() {}, function(error) {
+    	$rootScope.showErrorMsg('Could not get teams list from server', error.status, error.statusText);
+    });
 
     $scope.saveDependency = function(dependency) {
     	$scope.submitted = true;

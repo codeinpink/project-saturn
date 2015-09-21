@@ -1,4 +1,10 @@
-var saturnApp = angular.module('missionControlApp',['ui.bootstrap', 'ngResource', 'datatables','datatables.tabletools', 'datatables.bootstrap']);
+var saturnApp = angular.module('missionControlApp',['ui.bootstrap', 'ngResource', 'datatables','datatables.tabletools', 'datatables.bootstrap', 'toastr'])
+    .run(function($rootScope, toastr) {
+        $rootScope.showErrorMsg = function(msg, status, reason) {
+            toastr.error(msg + ' (' +
+            '<strong>' + status + '</strong>: ' + reason + ')', 'Error');
+        };
+    });
 
 saturnApp.config(function($interpolateProvider) {
   $interpolateProvider.startSymbol('{[{');
@@ -15,7 +21,17 @@ saturnApp.config(['$resourceProvider', '$httpProvider',
         $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     }
 ]);
+
+saturnApp.config(function(toastrConfig) {
+    angular.extend(toastrConfig, {
+        closeButton: true,
+        progressBar: true,
+        allowHtml: true
+    });
+});
+
 saturnApp.constant('REFRESH_RATE','5000');//data refresh rate 5000 = 5sec
+
 var PSI_CYCLES = [
     '19-1',
     '19-2',
