@@ -3,7 +3,6 @@ from django.template.defaultfilters import slugify
 
 class Team(models.Model):
     name = models.CharField(max_length=255, editable=False)
-    bug_buffer = models.FloatField(default=0)
     num_jiras = models.PositiveSmallIntegerField(default=0)
     confidence = models.FloatField(default=0)
     previous_unplanned_work = models.FloatField(default=0)
