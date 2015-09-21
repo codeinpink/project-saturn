@@ -29,7 +29,11 @@ class CommitmentViewSet(viewsets.ModelViewSet):
     serializer_class = CommitmentSerializer
 
     def perform_create(self, serializer):
-        serializer.save(feature_id=self.request.data['feature_id'], team_id=self.request.data['team_id'])
+        commitment = serializer.save(feature_id=self.request.data['feature_id'], team_id=self.request.data['team_id'])
+
+        if commitment.team not in commitment.feature.teams.all(): commitment.feature.teams.add(commitment.team)
+
+        return commitment
 
 class RiskViewSet(viewsets.ModelViewSet):
     queryset = Risk.objects.all().order_by('name')
