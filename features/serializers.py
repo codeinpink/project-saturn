@@ -24,7 +24,7 @@ class CommitmentSerializer(serializers.ModelSerializer):
         depth = 1
 
 class FeatureSerializer(serializers.ModelSerializer):
-    commitment_set = CommitmentSerializer(many=True)
+    commitment_set = CommitmentSerializer(many=True, read_only=True)
 
     class Meta:
         model = Feature
