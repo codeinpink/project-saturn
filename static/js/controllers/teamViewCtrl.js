@@ -281,11 +281,7 @@ saturnApp.controller('NewCommitmentCtrl', function($scope, $modalInstance, $root
 			if ($scope.doneDefinitionIsValid()) {
 				Commitment.save(commitment, function(commitment) {
 					console.log('Saved');
-
-					if ($scope.addingNewFeature) {
-						$scope.teamFeatures.push(commitment.feature);
-					}
-
+					$scope.teamFeatures.push(commitment.feature);
 					$modalInstance.close(commitment);
 				}, function(error) {
 					$rootScope.showErrorMsg('Could not save commitment on server', error.status, error.statusText);
