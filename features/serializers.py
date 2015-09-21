@@ -29,7 +29,7 @@ class FeatureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feature
         fields = ('id', 'name', 'description', 'theme', 'teams', 'clarity_or_jira_id',
-                'commitment_set')
+                'url', 'commitment_set')
         depth = 2
 
 class TeamSerializer(serializers.ModelSerializer):

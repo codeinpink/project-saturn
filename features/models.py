@@ -23,6 +23,7 @@ class Feature(models.Model):
     theme = models.CharField(max_length=30)
     teams = models.ManyToManyField(Team)
     clarity_or_jira_id = models.CharField(max_length=20, blank=True)
+    url = models.CharField(max_length=255, blank=True)
 
     def __unicode__(self):
         return self.name
