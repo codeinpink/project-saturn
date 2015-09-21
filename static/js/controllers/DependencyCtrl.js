@@ -1,4 +1,4 @@
-saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, commitment, Dependency, Team) {
+saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, $rootScope, commitment, Dependency, Team) {
 	$scope.commitment = commitment;
     $scope.dependency = {};
     $scope.submitted = false;
@@ -17,6 +17,8 @@ saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, 
 			$scope.commitment.dependency_set.push(dependency);
 			$scope.dependency = {};
 			$scope.submitted = false;
+		}, function(error) {
+			$rootScope.showErrorMsg('Could not save dependency on server', error.status, error.statusText);
 		});
     };
 
@@ -64,17 +66,19 @@ saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, 
 	};
 });
 
-saturnApp.controller('EditDependencyCtrl', function($scope, $modalInstance, Dependency, Team, dependency, teams) {
+saturnApp.controller('EditDependencyCtrl', function($scope, $modalInstance, $rootScope, Dependency, Team, dependency, teams) {
 	$scope.dependency = angular.copy(dependency);
     $scope.teams = teams;
     $scope.submitted = false;
 
 	$scope.updateDependency = function() {
 		$scope.submitted = true;
-		
+
 		Dependency.update({id: $scope.dependency.id}, $scope.dependency, function(dependency) {
 			console.log("Updated");
 			$modalInstance.close(dependency);
+		}, function(error) {
+			$rootScope.showErrorMsg('Could not update dependency on server', error.status, error.statusText);
 		});
 	};
 
@@ -83,7 +87,7 @@ saturnApp.controller('EditDependencyCtrl', function($scope, $modalInstance, Depe
 	};
 });
 
-saturnApp.controller('DeleteDependencyCtrl', function($scope, $modalInstance, $modal, Dependency, dependency) {
+saturnApp.controller('DeleteDependencyCtrl', function($scope, $modalInstance, $modal, $rootScope, Dependency, dependency) {
 	$scope.dependency = dependency;
     $scope.confirmationText = 'Are you sure you want to delete this dependency?';
 
@@ -91,6 +95,8 @@ saturnApp.controller('DeleteDependencyCtrl', function($scope, $modalInstance, $m
 		Dependency.delete({id: $scope.dependency.id}, function() {
 			console.log("Dependency deleted.");
 			$modalInstance.close($scope.dependency);
+		}, function(error) {
+			$rootScope.showErrorMsg('Could not delete dependency on server', error.status, error.statusText);
 		});
 	};
 

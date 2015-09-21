@@ -1,4 +1,4 @@
-saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, Risk, commitment) {
+saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, $rootScope, Risk, commitment) {
 	$scope.commitment = commitment;
 	$scope.generalOptions = RISK_GENERAL_OPTIONS;
 	$scope.resolutionOptions = RISK_RESOLUTION_OPTIONS;
@@ -14,6 +14,8 @@ saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, Risk, 
 			$scope.commitment.risk_set.push(risk);
 			$scope.risk = {};
 			$scope.submitted = false;
+		}, function(error) {
+			$rootScope.showErrorMsg('Could not save risk on server', error.status, error.statusText);
 		});
     };
 
@@ -61,7 +63,7 @@ saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, Risk, 
 	};
 });
 
-saturnApp.controller('EditRiskCtrl', function($scope, $modalInstance, risk, commitmentName, Risk) {
+saturnApp.controller('EditRiskCtrl', function($scope, $modalInstance, $rootScope, risk, commitmentName, Risk) {
 	$scope.risk = angular.copy(risk);
 	$scope.commitmentName = commitmentName;
 	$scope.generalOptions = RISK_GENERAL_OPTIONS;
@@ -74,6 +76,8 @@ saturnApp.controller('EditRiskCtrl', function($scope, $modalInstance, risk, comm
 		Risk.update({id: $scope.risk.id}, $scope.risk, function(risk) {
 			console.log("Updated");
 			$modalInstance.close(risk);
+		}, function(error) {
+			$rootScope.showErrorMsg('Could not update risk on server', error.status, error.statusText);
 		});
 	};
 
@@ -82,7 +86,7 @@ saturnApp.controller('EditRiskCtrl', function($scope, $modalInstance, risk, comm
 	};
 });
 
-saturnApp.controller('DeleteRiskCtrl', function($scope, $modalInstance, $modal, Risk, risk) {
+saturnApp.controller('DeleteRiskCtrl', function($scope, $modalInstance, $modal, $rootScope, Risk, risk) {
 	$scope.risk = risk;
     $scope.confirmationText = 'Are you sure you want to delete this risk?';
 
@@ -90,6 +94,8 @@ saturnApp.controller('DeleteRiskCtrl', function($scope, $modalInstance, $modal, 
 		Risk.delete({id: $scope.risk.id}, function() {
 			console.log("Risk deleted.");
 			$modalInstance.close($scope.risk);
+		}, function(error) {
+			$rootScope.showErrorMsg('Could not delete risk on server', error.status, error.statusText);
 		});
 	};
 
