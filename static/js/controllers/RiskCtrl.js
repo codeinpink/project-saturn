@@ -10,7 +10,7 @@ saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, $rootS
         risk.commitment_id = $scope.commitment.id;
 
         Risk.save(risk, function(risk) {
-			console.log("Saved");
+			$rootScope.showSuccessMsg('Saved risk on server');
 			$scope.commitment.risk_set.push(risk);
 			$scope.risk = {};
 			$scope.submitted = false;
@@ -74,7 +74,7 @@ saturnApp.controller('EditRiskCtrl', function($scope, $modalInstance, $rootScope
 		$scope.submitted = true;
 
 		Risk.update({id: $scope.risk.id}, $scope.risk, function(risk) {
-			console.log("Updated");
+			$rootScope.showSuccessMsg('Updated risk on server');
 			$modalInstance.close(risk);
 		}, function(error) {
 			$rootScope.showErrorMsg('Could not update risk on server', error.status, error.statusText);
@@ -92,7 +92,7 @@ saturnApp.controller('DeleteRiskCtrl', function($scope, $modalInstance, $modal, 
 
 	$scope.delete = function() {
 		Risk.delete({id: $scope.risk.id}, function() {
-			console.log("Risk deleted.");
+			$rootScope.showSuccessMsg('Deleted risk on server');
 			$modalInstance.close($scope.risk);
 		}, function(error) {
 			$rootScope.showErrorMsg('Could not delete risk on server', error.status, error.statusText);

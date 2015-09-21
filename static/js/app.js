@@ -4,6 +4,10 @@ var saturnApp = angular.module('missionControlApp',['ui.bootstrap', 'ngResource'
             toastr.error(msg + ' (' +
             '<strong>' + status + '</strong>: ' + reason + ')', 'Error');
         };
+
+        $rootScope.showSuccessMsg = function(msg) {
+            toastr.success(msg, 'Success');
+        }
     });
 
 saturnApp.config(function($interpolateProvider) {

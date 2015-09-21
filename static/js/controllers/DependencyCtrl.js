@@ -13,7 +13,7 @@ saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, 
         dependency.dependent_on_id = (dependency.dependent_on ? dependency.dependent_on.id : null);
 
         Dependency.save(dependency, function(dependency) {
-			console.log("Saved");
+			$rootScope.showSuccessMsg('Saved dependency on server');
 			$scope.commitment.dependency_set.push(dependency);
 			$scope.dependency = {};
 			$scope.submitted = false;
@@ -75,7 +75,7 @@ saturnApp.controller('EditDependencyCtrl', function($scope, $modalInstance, $roo
 		$scope.submitted = true;
 
 		Dependency.update({id: $scope.dependency.id}, $scope.dependency, function(dependency) {
-			console.log("Updated");
+			$rootScope.showSuccessMsg('Updated dependency on server');
 			$modalInstance.close(dependency);
 		}, function(error) {
 			$rootScope.showErrorMsg('Could not update dependency on server', error.status, error.statusText);
@@ -93,7 +93,7 @@ saturnApp.controller('DeleteDependencyCtrl', function($scope, $modalInstance, $m
 
 	$scope.delete = function() {
 		Dependency.delete({id: $scope.dependency.id}, function() {
-			console.log("Dependency deleted.");
+			$rootScope.showSuccessMsg('Deleted dependency on server');
 			$modalInstance.close($scope.dependency);
 		}, function(error) {
 			$rootScope.showErrorMsg('Could not delete dependency on server', error.status, error.statusText);

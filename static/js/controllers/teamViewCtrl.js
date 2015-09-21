@@ -280,7 +280,7 @@ saturnApp.controller('NewCommitmentCtrl', function($scope, $modalInstance, $root
 
 			if ($scope.doneDefinitionIsValid()) {
 				Commitment.save(commitment, function(commitment) {
-					console.log('Saved');
+					$rootScope.showSuccessMsg('Saved commitment on server');
 					$scope.teamFeatures.push(commitment.feature);
 					$modalInstance.close(commitment);
 				}, function(error) {
@@ -302,7 +302,7 @@ saturnApp.controller('DeleteCommitmentCtrl', function($scope, $modalInstance, $m
 
 	$scope.delete = function() {
 		Commitment.delete({id: $scope.commitment.id}, function() {
-			console.log('Commitment deleted.');
+			$rootScope.showSuccessMsg('Deleted commitment on server');
 			$modalInstance.close($scope.commitment);
 		}, function(error) {
 			$rootScope.showErrorMsg('Could not delete commitment on server', error.status, error.statusText);
@@ -322,7 +322,7 @@ saturnApp.controller('EditCommitmentCtrl', function($scope, $modalInstance, $roo
 
 	$scope.updateCommitment = function() {
 		Commitment.update({id: $scope.commitment.id}, $scope.commitment, function(commitment) {
-			console.log("Updated");
+			$rootScope.showSuccessMsg('Updated commitment on server');
 			$modalInstance.close(commitment);
 		}, function(error) {
 			$rootScope.showErrorMsg('Could not update commitment on server', error.status, error.statusText);

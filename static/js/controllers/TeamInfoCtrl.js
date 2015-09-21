@@ -7,7 +7,7 @@ saturnApp.controller('TeamInfoCtrl', function($scope, $modalInstance, $rootScope
 
     	if ($scope.team.confidence > 0) {
     		Team.update({id: $scope.team.id}, $scope.team, function(team) {
-				console.log("Updated");
+				$rootScope.showSuccessMsg('Updated PSI Capacity on server');
 				$modalInstance.close(team);
 			}, function(error) {
 				$rootScope.showErrorMsg('Could not update PSI Capacity on server', error.status, error.statusText);
