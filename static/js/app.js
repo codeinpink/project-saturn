@@ -46,7 +46,9 @@ var PSI_CYCLES = [
 
 var COMMITMENT_STATUS_OPTIONS = [
     'COMMIT',
-    'STRETCH'
+    'STRETCH',
+    'NO',
+    'N/A'
 ];
 
 var DEFINITION_OF_DONE_OPTIONS = [
@@ -74,20 +76,23 @@ var RISK_RESOLUTION_OPTIONS = [
 ];
 
 saturnApp.constant('THEMES',[
-    'AOS-5525',
     'Business CPE',
+    'Carrier CPE',
     'EoCu',
-    'FTTN-TA',
+    'FTTN TA',
+    'FTTP ONT',
+    'FTTDP',
+    'FTTN',
     'FTTP',
-    'FTTP/FTTDP',
-    'FTTP-AOE',
-    'FTTP-Legacy',
-    'FTTP-ONT',
-    'HW',
+    'Infrastructure',
     'MSAN',
-    'NM Convergence',
+    'MSAN TA',
+    'Managed Wifi',
+    'Next Gen Optical',
+    'Network Mgmt Convergence',
     'Packet Optical',
-    'SDN/NFV',
+    'ProCloud Services',
+    'SDN & NFV',
     'Solutions & Applications',
     'Voice'
 ]);
