@@ -9,7 +9,7 @@ Previously a team hackathon project for 9/10/2015 (see hackathon branch).  Now a
 3. Install Django Rest Framework
 
 ### Download
-1. Clone this repo: ```git clone git@github.com:codeinpink/project-saturn.git```
+1. Clone this repo: ```git clone https://github.com/codeinpink/project-saturn.git```
 2. ```cd project-saturn```
  
 ### Set Up Project
