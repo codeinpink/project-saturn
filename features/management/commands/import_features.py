@@ -22,7 +22,8 @@ class Command(BaseCommand):
                 try:
                     teams = self.get_team_objects(filter(None, row[TEAMS].split(';')))
 
-                    feature = Feature(name=row[FEATURE], theme=row[THEME],
+                    if row[FEATURE]:
+                        feature = Feature(name=row[FEATURE], theme=row[THEME],
                                                     clarity_or_jira_id=row[ID], url=row[URL])
                     feature.save()
                     feature.teams.add(*teams)
