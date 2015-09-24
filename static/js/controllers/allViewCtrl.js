@@ -93,7 +93,9 @@ saturnApp.controller('riskTabCtrl', function($scope, $http, $rootScope, DTOption
 
     $scope.dtColumns = [
         DTColumnBuilder.newColumn('commitment.feature.name').withTitle('Feature'),
+		DTColumnBuilder.newColumn('commitment.feature.theme').withTitle('Theme'),
         DTColumnBuilder.newColumn('commitment.name').withTitle('Commitment'),
+		DTColumnBuilder.newColumn('commitment.team.name').withTitle('Team'),
         DTColumnBuilder.newColumn('name').withTitle('Risk'),
         DTColumnBuilder.newColumn('probability').withTitle('Probability'),
         DTColumnBuilder.newColumn('impact').withTitle('Impact'),
@@ -148,7 +150,9 @@ saturnApp.controller('dependencyTabCtrl', function($scope, $rootScope, DTOptions
 
    $scope.dtColumns = [
        DTColumnBuilder.newColumn('commitment.feature.name').withTitle('Feature'),
+	   DTColumnBuilder.newColumn('commitment.feature.theme').withTitle('Theme'),
        DTColumnBuilder.newColumn('commitment.name').withTitle('Commitment'),
+	   DTColumnBuilder.newColumn('commitment.team.name').withTitle('Team'),
        DTColumnBuilder.newColumn('name').withTitle('Dependency'),
        DTColumnBuilder.newColumn('dependent_on.name').withTitle('Dependent On'),
        DTColumnBuilder.newColumn('notes').withTitle('Comments'),
