@@ -34,7 +34,7 @@ saturnApp.config(function(toastrConfig) {
     });
 });
 
-saturnApp.constant('REFRESH_RATE','15000');//data refresh rate 5000 = 5sec
+saturnApp.constant('REFRESH_RATE','30000');//data refresh rate 5000 = 5sec
 
 var PSI_CYCLES = [
     '19-1',
