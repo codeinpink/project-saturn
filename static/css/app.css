@@ -48,6 +48,13 @@
     color: #d9534f;
 }
 
+/* Fix for bug where Table Tools export button
+doesn't get its height/width set because the table
+is initialized inside a tab */
+.DTTT_button_csv embed {
+    width: 55px;
+    height: 34px;
+}
 
 td.ng-binding {
     max-width: 10em;
