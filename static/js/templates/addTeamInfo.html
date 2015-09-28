@@ -7,23 +7,23 @@
         <div class="container-fluid">
             <form class="form-horizontal" name="teamPsiInfoForm">
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Previous PSI Unplanned Work:</label>
-                    <div class="col-sm-9">
+                    <label class="control-label col-sm-5">Previous PSI Unplanned Work<br>(% of Team's Capacity):</label>
+                    <div class="col-sm-7">
                         <input type="number" step="any" min="0" ng-model="team.previous_unplanned_work" class="form-control" value="{[{ team.previous_unplanned_work }]}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Planned Unplanned Work:</label>
-                    <div class="col-sm-9">
+                    <label class="control-label col-sm-5">Planned Unplanned Work<br>(% of Team's Capacity):</label>
+                    <div class="col-sm-7">
                         <input type="number" step="any" min="0" ng-model="team.planned_unplanned_work" class="form-control" value="{[{ team.planned_unplanned_work }]}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">
+                    <label class="control-label col-sm-5">
                         Confidence:
                         <span ng-if="submitted && team.confidence === 0">*</span>
                     </label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-7">
                         <input type="number" step="any" min="0" max="5" ng-model="team.confidence" class="form-control" value="{[{ team.confidence }]}"
                         tooltip="This must be between 1 and 5" tooltip-trigger="focus">
                     </div>
