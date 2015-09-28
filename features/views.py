@@ -13,8 +13,14 @@ def team(request, slug):
     team = get_object_or_404(Team, slug=slug)
     return render(request, 'features/team.html', {'team': team})
 
+def all_commitments(request):
+    return render(request, 'features/commitments.html', {})
+
+def all_features(request):
+    return render(request, 'features/features.html', {})
+
 def all_teams(request):
-    return render(request, 'features/all.html', {})
+    return render(request, 'features/teams.html', {})
 
 class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all().order_by('name')

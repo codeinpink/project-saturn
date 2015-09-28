@@ -1,9 +1,3 @@
-
-saturnApp.controller("allViewCtrl",['$scope',
-	function($scope){
-
-}]);
-
 saturnApp.controller('commitTabCtrl', function($scope, $rootScope, DTOptionsBuilder, DTColumnBuilder, Commitment, REFRESH_RATE) {
     $scope.dtInstance ={};
     $scope.reloadData = reloadData;

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block nav %}
 {% include 'nav.html' %}
@@ -46,5 +47,5 @@ All Teams
 
 {% endblock %}
 {% block script %}
-
+<script type="text/javascript" src = "{% static "js/controllers/commitmentViewCtrl.js" %}"></script>
 {% endblock %}

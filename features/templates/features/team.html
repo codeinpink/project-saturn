@@ -105,9 +105,10 @@
 {% endblock %}
 
 {% block script %}
-<script type="text/javascript" src = "{% static "js/controllers/TeamInfoCtrl.js" %}"></script>
-<script type="text/javascript" src = "{% static "js/controllers/RiskCtrl.js" %}"></script>
-<script type="text/javascript" src = "{% static "js/controllers/DependencyCtrl.js" %}"></script>
+<script type="text/javascript" src="{% static "js/controllers/teamViewCtrl.js" %}"></script>
+<script type="text/javascript" src="{% static "js/controllers/TeamInfoCtrl.js" %}"></script>
+<script type="text/javascript" src="{% static "js/controllers/RiskCtrl.js" %}"></script>
+<script type="text/javascript" src="{% static "js/controllers/DependencyCtrl.js" %}"></script>
 <script language="JavaScript">
   window.onbeforeunload = confirmExit;
   function confirmExit()
