@@ -1,4 +1,4 @@
-var TEAM_COLUMN_LABELS = ['Commitment','Feature', 'Commit Status', 'Def. of Done', 'Start Iteration', 'Finish Iteration', 'Comments'];
+var TEAM_COLUMN_LABELS = ['Commitment','Feature', 'Theme', 'Commit Status', 'Def. of Done', 'Start Iteration', 'Finish Iteration', 'Comments'];
 var psiCapacitySet = false;
 
 saturnApp.controller('teamViewCtrl', function($scope, $http, $resource, $modal, $window, DTOptionsBuilder, DTColumnDefBuilder, $rootScope, Team, Feature, Commitment) {
