@@ -10,7 +10,41 @@ All Features
 {% endblock title %}
 
 {% block content %}
+<div style="margin-top: 60px;">
+	<div class="container white-bg" ng-controller="allFeaturesViewCtrl">
+		<div class="row">
+			<div class="header">
+				<h1>All Features</h1>
+			</div>
+		</div>
+		<div class="row">
+			<table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table row-border table-hover table-striped">
+				<thead>
+					<tr>
+						<th>Feature</th>
+                        <th>Theme</th>
+                        <th>Commitments</th>
+                        <th>Risks</th>
+                        <th>Dependencies</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="feature in features">
+						<td>
+							<a ng-if="feature.url" ng-href="{[{ feature.url }]}" target="_blank">{[{ feature.name }]}</a>
+							<span ng-if="!feature.url">{[{ feature.name }]}</span>
+						</td>
+                        <td>{[{ feature.theme }]}</td>
+                        <td>{[{ feature.commitment_set.length }]}</td>
+                        <td>{[{ getTotalRisks(feature.commitment_set) }]}</td>
+                        <td>{[{ getTotalDependencies(feature.commitment_set) }]}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
+	</div>
+</div>
 {% endblock %}
 
 {% block script %}
