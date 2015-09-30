@@ -1,4 +1,5 @@
-var saturnApp = angular.module('missionControlApp',['ui.bootstrap', 'ngResource', 'datatables','datatables.tabletools', 'datatables.bootstrap', 'toastr'])
+var saturnApp = angular.module('missionControlApp', ['ui.bootstrap', 'ngResource', 'datatables',
+        'datatables.tabletools', 'datatables.bootstrap', 'toastr', 'angular-loading-bar'])
     .run(function($rootScope, toastr) {
         $rootScope.showErrorMsg = function(msg, status, reason) {
             toastr.error(msg + ' (' +
