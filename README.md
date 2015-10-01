@@ -12,7 +12,7 @@ Previously a team hackathon project for 9/10/2015 (see hackathon branch).  Now a
 ### Download
 1. Clone this repo: ```git clone https://github.com/codeinpink/project-saturn.git```
 2. ```cd project-saturn```
- 
+
 ### Set Up Project
 1. Make migrations: ```python manage.py makemigrations```
 2. Migrate: ```python manage.py migrate```
@@ -22,11 +22,11 @@ Previously a team hackathon project for 9/10/2015 (see hackathon branch).  Now a
 
 
 ## To-do
-- [ ] Add loading bar to indicate site is loading
-- [ ] Add loading bar to tables to indicate loading data
+- [x] Add loading bar to indicate site is loading
+- [x] Add loading bar to tables to indicate loading data
 - [ ] Add front end tests
 - [ ] Add back end tests
-- [ ] Add 'unique' requirements when applicable to models
+- [x] Add 'unique' requirements when applicable to models
 - [ ] Remove auto-refresh on Commitments page *or* find a way to keep filters/spot when refreshing data
 - [ ] Add Features page (feature roll-up of commitments)
 - [ ] Add Teams page (view all team plans)
