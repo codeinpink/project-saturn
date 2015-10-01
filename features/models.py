@@ -2,12 +2,11 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 class Team(models.Model):
-    name = models.CharField(max_length=255)
-    num_jiras = models.PositiveSmallIntegerField(default=0)
+    name = models.CharField(max_length=255, unique=True)
     confidence = models.FloatField(default=0)
     previous_unplanned_work = models.FloatField(default=0)
     planned_unplanned_work = models.FloatField(default=0)
-    slug = models.SlugField(editable=False)
+    slug = models.SlugField(editable=False, unique=True)
 
     def save(self, **kwargs):
         self.slug = slugify(self.name)
@@ -57,6 +56,9 @@ class Dependency(models.Model):
     commitment = models.ForeignKey(Commitment)
     dependent_on = models.ForeignKey(Team)
     notes = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name_plural = "dependencies"
 
     def __unicode__(self):
         return self.name

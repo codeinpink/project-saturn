@@ -37,7 +37,7 @@ class TeamSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Team
-        fields = ('id', 'name', 'num_jiras', 'confidence',
+        fields = ('id', 'name', 'confidence',
                 'previous_unplanned_work', 'planned_unplanned_work', 'slug', 'feature_set',
                 'commitment_set')
         depth = 2
