@@ -29,7 +29,7 @@ Previously a team hackathon project for 9/10/2015 (see hackathon branch).  Now a
 - [x] Add 'unique' requirements when applicable to models
 - [ ] Remove auto-refresh on Commitments page *or* find a way to keep filters/spot when refreshing data
 - [x] Add Features page (feature roll-up of commitments)
-- [ ] Add Teams page (view all team plans)
+- [x] Add Teams page (view all team plans)
 - [ ] Double check theme field is a dropdown when adding new features (is this admin?)
 - [ ] Add confirmation prompt for when user attempts to save 0 unplanned work
 - [ ] Update home page to remove "View All Commitments" button, add navbar, and show input field by default
@@ -37,3 +37,5 @@ Previously a team hackathon project for 9/10/2015 (see hackathon branch).  Now a
 - [ ] Add modal pop up on page load to team page with steps (add commitments, add risks/dependencies, set PSI capacity, optional export, done) if user hasn't used site (possibly use cookie expiration of 1 month so it pops up each PSI)
 - [ ] Add script to git pull and stop, rm, build, and run docker
 - [ ] Update docker scripts/files and upload to separate branch
+- [ ] Update tables to refer to "commitments" and not "records"
+- [ ] Add suggestion to commitment table if empty
