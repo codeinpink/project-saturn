@@ -125,3 +125,16 @@ form span, .required {
     font-size: 20px;
     font-weight: bold;
 }
+
+ul.team-plans {
+    padding-left: 0px;
+}
+
+li.team-plan {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.team-plan h2 .label {
+    margin-left: 20px;
+}

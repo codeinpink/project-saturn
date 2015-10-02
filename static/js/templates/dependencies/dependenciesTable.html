@@ -1,0 +1,29 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Dependencies for Commitment - {[{ commitment.name }]} ({[{ commitment.feature.name }]})</h4>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Dependency</th>
+                        <th>Dependent On</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="dependency in commitment.dependency_set">
+                        <td>{[{ dependency.name }]}</td>
+                        <td>{[{ dependency.dependent_on.name }]}</td>
+                        <td>{[{ dependency.notes }]}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="close()">Close</button>
+    </div>
+</div>

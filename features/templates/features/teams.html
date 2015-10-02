@@ -10,9 +10,84 @@ All Teams
 {% endblock title %}
 
 {% block content %}
+<div style="margin-top: 60px;">
+	<div class="container" ng-controller="allTeamsViewCtrl">
+		<div class="row">
+			<div class="header">
+				<h1>All Teams</h1>
+			</div>
+		</div>
+        <div class="row">
+            <div class="col-sm-12 col-md-push-2 col-md-8" style="margin: 30px 0;">
+                <input ng-model="search.name" type="text" class="form-control input-lg" placeholder="Filter Team Plans">
+            </div>
+        </div>
+		<div class="row">
+            <ul class="team-plans">
+                <li ng-repeat="team in teams | filter:search:strict" class="team-plan">
+                    <h2>
+                        {[{ team.name }]}
+                        <span class="label label-primary" tooltip="Confidence"
+                        ng-class="{'label-success': team.confidence > 3, 'label-warning': team.confidence >= 3 && team.confidence < 4, 'label-danger': team.confidence < 3}">{[{ team.confidence }]}</span>
+                    </h2>
+                    <p ng-if="!team.commitment_set.length" class="text-center">This team has no commitments!</p>
+                    <table ng-if="team.commitment_set.length" class="table table-striped table-hover">
+                        <thead>
+        					<tr>
+        						<th style="display: none;">JIRA/Clarity ID</th>
+        						<th>Commitment</th>
+                                <th>Feature</th>
+                                <th>Theme</th>
+        						<th>Commit Status</th>
+        						<th>Def. of Done</th>
+        						<th>Start Iteration</th>
+        						<th>Finish Iteration</th>
+                                <th>Comments</th>
+                                <th>Risks</th>
+                                <th>Dependencies</th>
+        					</tr>
+        				</thead>
+                        <tbody>
+        					<tr ng-repeat="commitment in team.commitment_set">
+        						<td style="display: none;">{[{ commitment.feature.clarity_or_jira_id }]}</td>
+        						<td>{[{ commitment.name }]}</td>
+        						<td>
+        							<a ng-if="commitment.feature.url" ng-href="{[{ commitment.feature.url }]}" target="_blank">{[{ commitment.feature.name }]}</a>
+        							<span ng-if="!commitment.feature.url">{[{ commitment.feature.name }]}</span>
+        						</td>
+        						<td>{[{ commitment.feature.theme }]}</td>
+        						<td>{[{ commitment.status }]}</td>
+        						<td>{[{ commitment.done_definition }]}</td>
+        						<td>{[{ commitment.start }]}</td>
+        						<td>{[{ commitment.stop }]}</td>
+        						<td>{[{ commitment.notes }]}</td>
+        						<td>
+        							<button type="button" ng-if="commitment.risk_set.length" ng-click="showRisks(commitment)" class="btn btn-default"
+        							tooltip="Show Risks for This Commitment">
+        								<span ng-if="commitment.risk_set.length">{[{ commitment.risk_set.length }]}</span>
+        							</button>
+                                    <span ng-if="!commitment.risk_set.length">0</span>
+        						</td>
+        						<td>
+        							<button type="button" ng-if="commitment.dependency_set.length" ng-click="showDependencies(commitment)" class="btn btn-default"
+        							tooltip="Show Dependencies for This Commitment">
+        								<span ng-if="commitment.dependency_set.length">{[{ commitment.dependency_set.length }]}</span>
+        							</button>
+                                    <span ng-if="!commitment.dependency_set.length">0</span>
+        						</td>
+        					</tr>
+        				</tbody>
+                    </table>
+                </li>
+            </ul>
+		</div>
 
+	</div>
+</div>
 {% endblock %}
 
 {% block script %}
 <script type="text/javascript" src = "{% static "js/controllers/allTeamsViewCtrl.js" %}"></script>
+<script type="text/javascript" src="{% static "js/controllers/RiskCtrl.js" %}"></script>
+<script type="text/javascript" src="{% static "js/controllers/DependencyCtrl.js" %}"></script>
 {% endblock script %}

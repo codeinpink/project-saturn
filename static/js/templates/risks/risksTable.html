@@ -1,0 +1,35 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Risks for Commitment - {[{ commitment.name }]} ({[{ commitment.feature.name }]})</h4>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Risk</th>
+                        <th>Probability</th>
+                        <th>Impact</th>
+                        <th>Severity</th>
+                        <th>Resolution</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="risk in commitment.risk_set">
+                        <td>{[{ risk.name }]}</td>
+                        <td>{[{ risk.probability }]}</td>
+                        <td>{[{ risk.impact }]}</td>
+                        <td>{[{ risk.severity }]}</td>
+                        <td>{[{ risk.resolution }]}</td>
+                        <td>{[{ risk.notes }]}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="close()">Close</button>
+    </div>
+</div>

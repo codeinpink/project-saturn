@@ -97,10 +97,11 @@ saturnApp.controller('teamViewCtrl', function($scope, $http, $resource, $modal, 
 		DTColumnDefBuilder.newColumnDef(5),
 		DTColumnDefBuilder.newColumnDef(6),
 		DTColumnDefBuilder.newColumnDef(7),
-		DTColumnDefBuilder.newColumnDef(8).notSortable(),
+		DTColumnDefBuilder.newColumnDef(8),
 		DTColumnDefBuilder.newColumnDef(9).notSortable(),
 		DTColumnDefBuilder.newColumnDef(10).notSortable(),
 		DTColumnDefBuilder.newColumnDef(11).notSortable(),
+		DTColumnDefBuilder.newColumnDef(12).notSortable(),
 	];
 
 	$scope.addTeamInfo = function() {
@@ -148,7 +149,7 @@ saturnApp.controller('teamViewCtrl', function($scope, $http, $resource, $modal, 
 	$scope.showRisks = function(commitment) {
 		var modalInstance = $modal.open({
 			animation: true,
-			templateUrl: '/static/js/templates/showRisks.html',
+			templateUrl: '/static/js/templates/risks/editableRisksTable.html',
 			controller: 'RiskCtrl',
 			size: 'lg',
 			resolve: {
@@ -162,7 +163,7 @@ saturnApp.controller('teamViewCtrl', function($scope, $http, $resource, $modal, 
 	$scope.showDependencies = function(commitment) {
 		var modalInstance = $modal.open({
 			animation: true,
-			templateUrl: '/static/js/templates/showDependencies.html',
+			templateUrl: '/static/js/templates/dependencies/editableDependenciesTable.html',
 			controller: 'DependencyCtrl',
 			size: 'lg',
 			resolve: {
@@ -171,7 +172,7 @@ saturnApp.controller('teamViewCtrl', function($scope, $http, $resource, $modal, 
 	        	}
 			}
 	    });
-	}
+	};
 
 	$scope.editCommitment = function(size, commitment) {
 		var modalInstance = $modal.open({

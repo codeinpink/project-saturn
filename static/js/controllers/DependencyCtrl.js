@@ -25,7 +25,7 @@ saturnApp.controller('DependencyCtrl', function($scope, $modalInstance, $modal, 
     $scope.editDependency = function(size, dependency) {
 		var modalInstance = $modal.open({
 			animation: true,
-			templateUrl: '/static/js/templates/editDependency.html',
+			templateUrl: '/static/js/templates/dependencies/editDependency.html',
 			controller: 'EditDependencyCtrl',
 			size: size,
 			resolve: {

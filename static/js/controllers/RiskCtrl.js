@@ -22,7 +22,7 @@ saturnApp.controller('RiskCtrl', function($scope, $modalInstance, $modal, $rootS
 	$scope.editRisk = function(size, risk, commitmentName) {
 		var modalInstance = $modal.open({
 			animation: true,
-			templateUrl: '/static/js/templates/editRisk.html',
+			templateUrl: '/static/js/templates/risks/editRisk.html',
 			controller: 'EditRiskCtrl',
 			size: size,
 			resolve: {
