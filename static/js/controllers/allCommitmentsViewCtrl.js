@@ -43,12 +43,7 @@ saturnApp.controller('commitTabCtrl', function($scope, $rootScope, DTOptionsBuil
     ];
 
     function reloadData() {
-        var resetPaging = true;
-        $scope.dtInstance.reloadData(callback, resetPaging);
-    }
-
-    function callback(json) {
-        return;
+        $scope.dtInstance.reloadData(null, false);
     }
 
     setInterval($scope.reloadData,REFRESH_RATE);
@@ -100,12 +95,7 @@ saturnApp.controller('riskTabCtrl', function($scope, $http, $rootScope, DTOption
     ];
 
     function reloadData() {
-        var resetPaging = true;
-        $scope.dtInstance.reloadData(callback, resetPaging);
-    }
-
-    function callback(json) {
-        return;
+        $scope.dtInstance.reloadData(null, false);
     }
 
     setInterval($scope.reloadData, REFRESH_RATE);
@@ -154,12 +144,7 @@ saturnApp.controller('dependencyTabCtrl', function($scope, $rootScope, DTOptions
    ];
 
    function reloadData() {
-       var resetPaging = true;
-       $scope.dtInstance.reloadData(callback, resetPaging);
-   }
-
-   function callback(json) {
-       return;
+       $scope.dtInstance.reloadData(null, false);
    }
 
    setInterval($scope.reloadData, REFRESH_RATE);

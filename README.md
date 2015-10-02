@@ -27,7 +27,7 @@ Previously a team hackathon project for 9/10/2015 (see hackathon branch).  Now a
 - [ ] Add front end tests
 - [ ] Add back end tests
 - [x] Add 'unique' requirements when applicable to models
-- [ ] Remove auto-refresh on Commitments page *or* find a way to keep filters/spot when refreshing data
+- [x] Remove auto-refresh on Commitments page *or* find a way to keep filters/spot when refreshing data
 - [x] Add Features page (feature roll-up of commitments)
 - [x] Add Teams page (view all team plans)
 - [ ] Double check theme field is a dropdown when adding new features (is this admin?)
