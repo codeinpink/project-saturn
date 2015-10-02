@@ -18,7 +18,7 @@ class Team(models.Model):
 class Feature(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    theme = models.CharField(max_length=30)
+    theme = models.CharField(max_length=50)
     teams = models.ManyToManyField(Team)
     clarity_or_jira_id = models.CharField(max_length=20, blank=True)
     url = models.CharField(max_length=255, blank=True)

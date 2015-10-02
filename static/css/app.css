@@ -56,9 +56,29 @@ is initialized inside a tab */
     height: 34px;
 }
 
-td.ng-binding {
+td {
     max-width: 10em;
     word-wrap: break-word;
+}
+
+div.slider {
+    display: none;
+}
+
+.table .detail-table {
+    background: #eee;
+    margin-bottom: 0;
+}
+
+.detail-row {
+    padding: 0 !important;
+}
+.detail-table >thead:first-child>tr:first-child>th {
+    border-top: 2px solid #ddd !important;
+}
+
+.detail-table >tbody>tr:last-child>td {
+    border-bottom: 2px solid #ddd !important;
 }
 
 #psi-capacity {

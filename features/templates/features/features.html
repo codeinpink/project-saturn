@@ -11,33 +11,45 @@ All Features
 
 {% block content %}
 <div style="margin-top: 60px;">
-	<div class="container white-bg" ng-controller="allFeaturesViewCtrl">
+	<div class="container" ng-controller="allFeaturesViewCtrl">
 		<div class="row">
 			<div class="header">
 				<h1>All Features</h1>
 			</div>
 		</div>
 		<div class="row">
-			<table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table row-border table-hover table-striped">
+			<table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-hover table-striped">
 				<thead>
 					<tr>
 						<th>Feature</th>
+						<th>JIRA/Clarity ID</th>
                         <th>Theme</th>
-                        <th>Commitments</th>
-                        <th>Risks</th>
-                        <th>Dependencies</th>
+						<th>Teams</th>
+                        <th>COMMIT</th>
+                        <th>STRETCH</th>
+						<th>N/A</th>
+						<th>NO</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="feature in features">
+					<tr ng-repeat="feature in features" ng-click="toggleDetails(this, $event, feature)">
 						<td>
 							<a ng-if="feature.url" ng-href="{[{ feature.url }]}" target="_blank">{[{ feature.name }]}</a>
 							<span ng-if="!feature.url">{[{ feature.name }]}</span>
 						</td>
+						<td>{[{ feature.clarity_or_jira_id }]}</td>
                         <td>{[{ feature.theme }]}</td>
-                        <td>{[{ feature.commitment_set.length }]}</td>
-                        <td>{[{ getTotalRisks(feature.commitment_set) }]}</td>
-                        <td>{[{ getTotalDependencies(feature.commitment_set) }]}</td>
+						<td>{[{ getTeams(feature) }]}</td>
+                        <td>{[{ getCommitTotal(feature.commitment_set) }]}</td>
+                        <td>{[{ getStretchTotal(feature.commitment_set) }]}</td>
+						<td>{[{ getNATotal(feature.commitment_set) }]}</td>
+						<td>{[{ getNoTotal(feature.commitment_set) }]}</td>
+						<td>
+							<button type="button" class="btn btn-success" tooltip="Toggle Row Details" ng-disabled="!feature.commitment_set.length">
+								<i class="glyphicon" ng-class="{'glyphicon-plus': !expanded, 'glyphicon-minus': expanded}"></i>
+							</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>
