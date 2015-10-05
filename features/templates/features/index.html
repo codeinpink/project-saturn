@@ -10,18 +10,18 @@ Home
 {% block content %}
 <section class="jumbotron" ng-controller="searchCtrl as search">
 	<h1 class="text-center">PSI Planning Tool</h1>
-
-	<div class="center-block home-buttons">
-		<button type="button" id="team-btn" class="btn btn-default btn-lg" ng-click="hideInput=false">Show Me My Team</button>
-		<a href="{% url 'all_commitments' %}" class="btn btn-default btn-lg">See All Commitments</a>
+	<div class="center-block">
 		<br>
-		<div id="team-name-autocomplete" class="form-inline center-block" ng-hide="hideInput">
-			<input type="text" class="form-control input-lg" placeholder="Search Teams" ng-model="team"
-            typeahead="team as team.name for team in teams | filter:{name:$viewValue} | limitTo:5"
-            typeahead-on-select="goToTeam(team.slug)">
-			<button type="button" class="btn btn-primary btn-lg" ng-click="goToTeam(team.slug)">Go</button>
+		<div id="team-name-autocomplete" class="form-horizontal center-block">
+			<div class="form-group">
+				<div class="col-sm-3 col-sm-push-4">
+					<input type="text" class="form-control input-lg" placeholder="Search Teams" ng-model="team"
+	            	typeahead="team as team.name for team in teams | filter:{name:$viewValue} | limitTo:5"
+	            	typeahead-on-select="goToTeam(team.slug)">
+				</div>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="goToTeam(team.slug)">Go</button>
+			</div>
 		</div>
-
 	</div>
 </section>
 {% endblock %}

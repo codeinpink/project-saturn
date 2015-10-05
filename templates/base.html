@@ -39,15 +39,12 @@
 
     </head>
     <body ng-app = "missionControlApp" class="{% block bg %}{% endblock bg %}">
-        {% block nav %}
-        {% endblock nav %}
+        {% include 'nav.html' %}
+
         {% block content %}
-
-
         {% endblock content %}
 
         {% block script %}
-
         {% endblock script %}
     </body>
 </html>
