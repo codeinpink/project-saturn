@@ -15,11 +15,11 @@ between the nav and the image if the user scrolls */
     height: 400px;
 }
 
-.jumbotron h1, .navbar-brand, .navbar-nav li {
+.jumbotron h1, .navbar-brand, .navbar-nav li, #process h2, #process h4 {
     font-family: 'Orbitron', cursive;
 }
 
-.jumbotron h1, .navbar-default .navbar-brand {
+.jumbotron h1, .navbar-default .navbar-brand, #process h2, #process h4 {
     color: #4E4E4E;
 }
 
@@ -38,6 +38,14 @@ between the nav and the image if the user scrolls */
 
 #team-name-autocomplete button {
     padding: 10px 40px;
+}
+
+#process .glyphicon {
+    font-size: 24px;
+}
+
+#process .glyphicon-arrow-right {
+    padding-left: 20px;
 }
 
 .glyphicon.glyphicon-alert {

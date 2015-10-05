@@ -12,16 +12,38 @@ Home
 	<h1 class="text-center">PSI Planning Tool</h1>
 	<div class="center-block">
 		<br>
-		<div id="team-name-autocomplete" class="form-horizontal center-block">
-			<div class="form-group">
-				<div class="col-sm-3 col-sm-push-4">
+		<div id="team-name-autocomplete" class="center-block">
+			<div class="col-sm-8 col-sm-push-2 col-md-6 col-md-push-3">
+				<div class="input-group">
 					<input type="text" class="form-control input-lg" placeholder="Search Teams" ng-model="team"
 	            	typeahead="team as team.name for team in teams | filter:{name:$viewValue} | limitTo:5"
 	            	typeahead-on-select="goToTeam(team.slug)">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary btn-lg" ng-click="goToTeam(team.slug)">Go</button>
+					</span>
 				</div>
-				<button type="button" class="btn btn-primary btn-lg" ng-click="goToTeam(team.slug)">Go</button>
 			</div>
 		</div>
 	</div>
 </section>
+<div class="container">
+	<div class="row" id="process">
+		<h2 class="text-center">Process</h2>
+		<div class="col-sm-12 col-md-3">
+			<h4>1. Add Commitments <i class="glyphicon glyphicon-arrow-right text-success"></i></h4>
+		</div>
+		<div class="col-sm-12 col-md-3">
+			<h4>2. Add Risks/Dependencies <i class="glyphicon glyphicon-arrow-right text-success"></i></h4>
+		</div>
+		<div class="col-sm-12 col-md-2">
+			<h4>3. Set PSI Capacity <i class="glyphicon glyphicon-arrow-right text-success"></i></h4>
+		</div>
+		<div class="col-sm-12 col-md-2">
+			<h4>4. Export <i class="glyphicon glyphicon-arrow-right text-success"></i></h4>
+		</div>
+		<div class="col-sm-12 col-md-2">
+			<h4>5. Done! <i class="glyphicon glyphicon-ok text-success"></i></h4>
+		</div>
+	</div>
+</div>
 {% endblock %}
