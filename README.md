@@ -31,10 +31,10 @@ Previously a team hackathon project for 9/10/2015 (see hackathon branch).  Now a
 - [x] Add Features page (feature roll-up of commitments)
 - [x] Add Teams page (view all team plans)
 - [ ] Double check theme field is a dropdown when adding new features (is this admin?)
-- [ ] Add confirmation prompt for when user attempts to save 0 unplanned work
+- [x] Add confirmation prompt for when user attempts to save 0 unplanned work
 - [x] Update home page to remove "View All Commitments" button, add navbar, and show input field by default
 - [ ] Investigate/fix possible bug: feature was added to feature list twice when adding two commitments using the new feature without refreshing (refreshing fixed it)
-- [ ] Add modal pop up on page load to team page with steps (add commitments, add risks/dependencies, set PSI capacity, optional export, done) if user hasn't used site (possibly use cookie expiration of 1 month so it pops up each PSI)
+- [x] ~~Add modal pop up on page load to team page with steps (add commitments, add risks/dependencies, set PSI capacity, optional export, done) if user hasn't used site (possibly use cookie expiration of 1 month so it pops up each PSI)~~ Added process to home page
 - [ ] Add script to git pull and stop, rm, build, and run docker
 - [ ] Update docker scripts/files and upload to separate branch
 - [x] Update tables to refer to "commitments" and not "records"
