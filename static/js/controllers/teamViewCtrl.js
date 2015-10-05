@@ -67,6 +67,14 @@ saturnApp.controller('teamViewCtrl', function($scope, $http, $resource, $modal, 
 
 	$scope.dtOptions = DTOptionsBuilder.newOptions()
 	.withPaginationType('full_numbers')
+	.withLanguage({
+		'sEmptyTable': 'This team doesn\'t have any commitments yet!<br>Click "Add New Commitment" to get started.',
+		'sZeroRecords': 'No matching commitments found',
+		'sInfo': 'Showing _START_ to _END_ of _TOTAL_ commitments',
+		'sInfoEmpty': 'Showing 0 to 0 of 0 commitments',
+		'sInfoFiltered': '(filtered from _MAX_ total commitments)',
+		'sLengthMenu': 'Show _MENU_ commitments',
+	})
 	.withTableTools('/static/lib/copy_csv_xls_pdf.swf')
 	.withTableToolsButtons([
         'print',

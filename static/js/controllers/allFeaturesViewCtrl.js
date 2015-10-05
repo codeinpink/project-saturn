@@ -4,6 +4,14 @@ saturnApp.controller('allFeaturesViewCtrl', function($scope, $rootScope, Feature
     });
 
     $scope.dtOptions = DTOptionsBuilder.newOptions()
+    .withLanguage({
+		'sEmptyTable': 'No data available in table yet',
+		'sZeroRecords': 'No matching features found',
+		'sInfo': 'Showing _START_ to _END_ of _TOTAL_ features',
+		'sInfoEmpty': 'Showing 0 to 0 of 0 features',
+		'sInfoFiltered': '(filtered from _MAX_ total features)',
+		'sLengthMenu': 'Show _MENU_ features',
+	})
 	.withPaginationType('full_numbers')
     .withBootstrap();
 

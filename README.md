@@ -37,5 +37,5 @@ Previously a team hackathon project for 9/10/2015 (see hackathon branch).  Now a
 - [ ] Add modal pop up on page load to team page with steps (add commitments, add risks/dependencies, set PSI capacity, optional export, done) if user hasn't used site (possibly use cookie expiration of 1 month so it pops up each PSI)
 - [ ] Add script to git pull and stop, rm, build, and run docker
 - [ ] Update docker scripts/files and upload to separate branch
-- [ ] Update tables to refer to "commitments" and not "records"
-- [ ] Add suggestion to commitment table if empty
+- [x] Update tables to refer to "commitments" and not "records"
+- [x] Add suggestion to commitment table if empty

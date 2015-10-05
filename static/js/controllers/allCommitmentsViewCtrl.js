@@ -1,5 +1,5 @@
 saturnApp.controller('commitTabCtrl', function($scope, $rootScope, DTOptionsBuilder, DTColumnBuilder, Commitment, REFRESH_RATE) {
-    $scope.dtInstance ={};
+    $scope.dtInstance = {};
     $scope.reloadData = reloadData;
     $scope.dtOptions = DTOptionsBuilder
     .fromFnPromise(function() {
@@ -8,6 +8,14 @@ saturnApp.controller('commitTabCtrl', function($scope, $rootScope, DTOptionsBuil
         }).$promise;
     })
     .withPaginationType('full_numbers')
+    .withLanguage({
+		'sEmptyTable': 'No data available in table yet',
+		'sZeroRecords': 'No matching commitments found',
+		'sInfo': 'Showing _START_ to _END_ of _TOTAL_ commitments',
+		'sInfoEmpty': 'Showing 0 to 0 of 0 commitments',
+		'sInfoFiltered': '(filtered from _MAX_ total commitments)',
+		'sLengthMenu': 'Show _MENU_ commitments',
+	})
     .withTableTools('/static/lib/copy_csv_xls_pdf.swf')
     .withTableToolsButtons([
         'print',
@@ -46,7 +54,7 @@ saturnApp.controller('commitTabCtrl', function($scope, $rootScope, DTOptionsBuil
         $scope.dtInstance.reloadData(null, false);
     }
 
-    setInterval($scope.reloadData,REFRESH_RATE);
+    setInterval($scope.reloadData, REFRESH_RATE);
 });
 
 saturnApp.controller('riskTabCtrl', function($scope, $http, $rootScope, DTOptionsBuilder, DTColumnBuilder, Risk, REFRESH_RATE) {
@@ -59,6 +67,14 @@ saturnApp.controller('riskTabCtrl', function($scope, $http, $rootScope, DTOption
         }).$promise;
     })
     .withPaginationType('full_numbers')
+    .withLanguage({
+		'sEmptyTable': 'No data available in table yet',
+		'sZeroRecords': 'No matching risks found',
+		'sInfo': 'Showing _START_ to _END_ of _TOTAL_ risks',
+		'sInfoEmpty': 'Showing 0 to 0 of 0 risks',
+		'sInfoFiltered': '(filtered from _MAX_ total risks)',
+		'sLengthMenu': 'Show _MENU_ risks',
+	})
     .withTableTools('/static/lib/copy_csv_xls_pdf.swf')
     .withTableToolsButtons([
         'print',
@@ -102,7 +118,7 @@ saturnApp.controller('riskTabCtrl', function($scope, $http, $rootScope, DTOption
 });
 
 saturnApp.controller('dependencyTabCtrl', function($scope, $rootScope, DTOptionsBuilder, DTColumnBuilder, Dependency, REFRESH_RATE) {
-   $scope.dtInstance ={};
+   $scope.dtInstance = {};
    $scope.reloadData = reloadData;
    $scope.dtOptions = DTOptionsBuilder
    .fromFnPromise(function() {
@@ -111,6 +127,14 @@ saturnApp.controller('dependencyTabCtrl', function($scope, $rootScope, DTOptions
         }).$promise;
    })
    .withPaginationType('full_numbers')
+   .withLanguage({
+       'sEmptyTable': 'No data available in table yet',
+       'sZeroRecords': 'No matching dependencies found',
+       'sInfo': 'Showing _START_ to _END_ of _TOTAL_ dependencies',
+       'sInfoEmpty': 'Showing 0 to 0 of 0 dependencies',
+       'sInfoFiltered': '(filtered from _MAX_ total dependencies)',
+       'sLengthMenu': 'Show _MENU_ dependencies',
+   })
    .withTableTools('/static/lib/copy_csv_xls_pdf.swf')
    .withTableToolsButtons([
        'print',
