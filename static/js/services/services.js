@@ -2,6 +2,11 @@ saturnApp.factory('Team', function($resource) {
     return $resource('/api/teams/:id/', {id: '@id'}, {
         update: {
             method: 'PUT'
+        },
+        query: {
+            method: 'GET',
+            isArray: true,
+            cache: true
         }
     });
 });
