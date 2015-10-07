@@ -14,12 +14,16 @@ Previously a team hackathon project for 9/10/2015 (see hackathon branch).  Now a
 2. ```cd project-saturn```
 
 ### Set Up Project
+#### Development:
 1. Make migrations: ```python manage.py makemigrations```
 2. Migrate: ```python manage.py migrate```
 3. Import teams and features from CSV files: ```python manage.py import_teams``` and ```python manage.py import_features```
-4. Run server: ```python manage.py runserver```
-5. Navigate to 127.0.0.1:8000 and enjoy :bowtie:
+4. Set DEBUG setting in `saturn/settings.py` to true: `DEBUG = True` 
+5. Run server: ```python manage.py runserver```
+6. Navigate to 127.0.0.1:8000 and enjoy :bowtie:
 
+#### Production:
+See instructions in `docker` branch. You will want to make the database and import before you start the docker container.
 
 ## To-do
 - [x] Add loading bar to indicate site is loading
@@ -35,7 +39,7 @@ Previously a team hackathon project for 9/10/2015 (see hackathon branch).  Now a
 - [x] Update home page to remove "View All Commitments" button, add navbar, and show input field by default
 - [x] Investigate/fix possible bug: feature was added to feature list twice when adding two commitments using the new feature without refreshing
 - [x] ~~Add modal pop up on page load to team page with steps (add commitments, add risks/dependencies, set PSI capacity, optional export, done) if user hasn't used site (possibly use cookie expiration of 1 month so it pops up each PSI)~~ Added process to home page
-- [ ] Add script to git pull and stop, rm, build, and run docker
-- [ ] Update docker scripts/files and upload to separate branch
+- [x] Add script to git pull and stop, rm, build, and run docker
+- [x] Update docker scripts/files and upload to separate branch
 - [x] Update tables to refer to "commitments" and not "records"
 - [x] Add suggestion to commitment table if empty
