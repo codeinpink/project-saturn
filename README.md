@@ -41,6 +41,9 @@ home/developer
 
 Any time you make a change, you will need to stop, build, and start (in that order).
 
+If you are making any changes to the database models, you will need to run `python manage.py makemigrations`
+before you build and start.
+
 ## Details
 
 ### Port
