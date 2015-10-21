@@ -77,23 +77,8 @@ var RISK_RESOLUTION_OPTIONS = [
 ];
 
 saturnApp.constant('THEMES',[
-    'Business CPE',
-    'Carrier CPE',
-    'EoCu',
-    'FTTN TA',
-    'FTTP ONT',
-    'FTTDP',
-    'FTTN',
-    'FTTP',
     'Infrastructure',
-    'MSAN',
-    'MSAN TA',
-    'Managed Wifi',
-    'Next Gen Optical',
-    'Network Mgmt Convergence',
-    'Packet Optical',
-    'ProCloud Services',
-    'SDN & NFV',
+    'Services',
     'Solutions & Applications',
-    'Voice'
+    'Support'
 ]);
